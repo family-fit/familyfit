@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Family Fit</title>
+<meta name="description" content="Family Fit: family health information and essential products for mothers, children and elders in Bangladesh. সচেতন জীবন, সুস্থ পরিবার">
+<meta name="theme-color" content="#2265ab">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2265ab;--orange:#ca5529;--bg:#f4f6fa;--surface:#fff;--ink:#1c2430;--mute:#5d6877;--line:#dfe4ec;--chip:#eaf1fa;--head:#f8f8f8;--on-blue:#fff;--ot:#b24a24;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151d;--surface:#19212c;--ink:#e9edf3;--mute:#a1acbb;--line:#2b3644;--chip:#1f2c3f;--blue:#6aa6e8;--on-blue:#0b1b2e;--ot:#ff9a6b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10151d;--surface:#19212c;--ink:#e9edf3;--mute:#a1acbb;--line:#2b3644;--chip:#1f2c3f;--blue:#6aa6e8;--on-blue:#0b1b2e;--ot:#ff9a6b;color-scheme:dark}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:16px/1.5 "Hind Siliguri",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--head);z-index:30}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--head);border-bottom:1px solid var(--line);color:#1c2430}
+.top{display:flex;align-items:center;gap:8px;padding:4px 0}
+.logo{width:28px;flex:none;display:block}
+.logo img{display:block;width:100%;height:auto}
+.search{flex:1;display:flex;border:2px solid var(--orange);border-radius:999px;background:#fff;overflow:hidden;min-width:0}
+.search input{flex:1;min-width:0;border:0;background:transparent;padding:4px 12px;font-size:15px;color:#1c2430;outline:none}
+.search .clr{border:0;background:none;padding:0 8px;color:#5d6877;cursor:pointer;font-size:20px}
+.search .go{border:0;background:var(--orange);color:#fff;padding:0 14px;font-size:14px;font-weight:600;cursor:pointer}
+.search:focus-within{box-shadow:0 0 0 3px rgba(201,85,43,.3)}
+.desknav{display:none;gap:4px}
+.desknav a{display:flex;gap:6px;align-items:center;padding:6px 10px;border-radius:8px;font-weight:500}
+.desknav a[aria-current=page]{color:var(--blue);background:var(--chip)}
+.tabs{display:flex;gap:16px;overflow-x:auto;padding:0 0 1px;font-size:14px;scrollbar-width:none}
+.tabs button{border:0;background:none;padding:1px 2px;font-size:14px;font-weight:600;color:#5d6877;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
+.tabs button[aria-selected=true]{color:var(--blue);border-color:var(--orange)}
+main{padding:12px 0 88px;min-height:70vh}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--surface);border-radius:12px;padding:7px 2px;border:1px solid var(--line)}
+.quick button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;cursor:pointer;padding:1px;line-height:1.15}
+.quick .ic svg{width:18px;height:18px}.quick .ic{width:32px;height:32px;border-radius:10px;background:var(--chip);color:var(--blue);display:grid;place-items:center}
+.quick button:nth-child(even) .ic{color:var(--orange)}
+.promos{display:grid;gap:10px;margin-top:12px}
+.promo{border-radius:14px;padding:18px;position:relative;overflow:hidden}
+.promo.a{background:var(--blue);color:#fff}
+.promo.a h2{margin:0;font-size:26px;line-height:1.25}
+.promo.a p{margin:6px 0 0;opacity:.92}
+.promo.b{background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.promo.b .ic{width:46px;height:46px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;flex:none}
+.promo h3{margin:0;font-size:16px}.promo.b p{margin:2px 0 0;color:var(--mute);font-size:14px}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.panel{background:linear-gradient(var(--chip),var(--surface) 60%);border:1px solid var(--line);border-radius:12px;padding:7px 8px 8px}
+.panel h2{margin:0 0 5px;font-size:14.5px;line-height:1.2}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.mini{display:block;text-align:center;min-width:0}
+.mi{aspect-ratio:5/4;border-radius:8px;overflow:hidden;background:var(--chip)}.mi img{width:100%;height:100%;object-fit:cover;display:block}
+.mp{font-weight:700;color:var(--ot);font-size:13.5px;margin-top:2px;line-height:1.2}.mp s{color:var(--mute);font-weight:400;font-size:12px}
+.mn{font-size:11.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn{margin:4px 0 0;font-size:11px;color:var(--mute);text-align:center}
+.up{margin-top:12px;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.uph{padding:10px 14px;background:linear-gradient(90deg,var(--chip),var(--surface))}.uph h2{margin:0;font-size:17px}
+.row{display:flex;gap:10px;overflow-x:auto;padding:10px 12px 12px}
+.chips{display:flex;gap:8px;overflow-x:auto;margin-top:14px;scrollbar-width:none;padding-bottom:2px}
+.achip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-weight:600;cursor:pointer;color:var(--ink);font-size:14px}
+.achip[aria-selected=true]{background:var(--blue);color:var(--on-blue);border-color:var(--blue)}
+select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);margin-top:4px}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-weight:600;cursor:pointer;color:var(--ink)}
+.chip[aria-selected=true]{background:var(--blue);color:var(--on-blue);border-color:var(--blue)}
+.ui{display:block;width:96px;flex:none;text-align:center}.ui img{width:96px;height:96px;border-radius:10px;display:block;object-fit:cover}
+.un{font-size:13px;font-weight:600;margin-top:4px}.us{font-size:12px;color:var(--mute)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin:18px 2px 8px;gap:8px;flex-wrap:wrap}
+.sh h2{margin:0;font-size:20px}.demo-note{font-size:12.5px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.card{background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.card:hover{border-color:var(--blue)}
+.card .ph{aspect-ratio:1/1;background:var(--chip);overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .b{padding:8px 10px 10px;display:flex;flex-direction:column;gap:2px}
+.tag{align-self:flex-start;font-size:11.5px;background:var(--chip);color:var(--blue);border-radius:4px;padding:0 6px;font-weight:600}
+.card h3{margin:2px 0 0;font-size:15px;line-height:1.3}
+.price{font-weight:700;color:var(--ot);font-size:18px}.price small{font-weight:500;color:var(--mute);font-size:13px}
+.meta{display:flex;justify-content:space-between;gap:6px;font-size:12.5px;color:var(--mute)}
+.star{color:var(--orange);letter-spacing:1px}
+.dm{font-size:10.5px;border:1px dashed var(--mute);border-radius:4px;padding:0 4px;margin-left:4px}
+.empty,.soon{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:32px 16px;text-align:center}
+.empty{grid-column:1/-1}.soon h2{margin:0 0 6px}
+.btn{display:inline-block;text-align:center;text-decoration:none;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer;background:var(--blue);color:var(--on-blue)}
+.btn.o{background:var(--orange);color:#fff;width:100%;font-size:18px}.btn.g{background:var(--chip);color:var(--blue)}
+.back{display:inline-flex;gap:4px;align-items:center;border:0;background:none;color:var(--blue);font-weight:600;cursor:pointer;padding:6px 0}
+.pd{display:grid;gap:12px;max-width:640px;margin:0 auto}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.vid{aspect-ratio:9/16;width:100%;width:min(100%,max(220px,calc((100vh - 150px)*9/16)));width:min(100%,max(220px,calc((100svh - 150px)*9/16)));margin:0 auto;background:#0e2744;border-radius:12px;overflow:hidden;display:grid;place-items:center;color:#fff;text-align:center}
+.vid video{width:100%;height:100%;object-fit:contain;background:#000}
+.vid span{padding:16px;font-weight:600}
+.gal .main{aspect-ratio:1/1;background:var(--chip);border-radius:12px;overflow:hidden;display:grid;place-items:center}
+.gal .main img{max-width:100%;max-height:100%;object-fit:contain}
+.thumbs{display:flex;gap:8px;margin-top:8px;overflow-x:auto}
+.thumbs button{width:60px;height:60px;border:2px solid var(--line);border-radius:8px;padding:0;background:var(--chip);cursor:pointer;overflow:hidden;flex:none}
+.thumbs button[aria-pressed=true]{border-color:var(--orange)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.cap{font-size:12.5px;color:var(--mute);margin:6px 0 0}
+.pd h1{margin:0;font-size:24px;line-height:1.25}
+.pd .price{font-size:28px}
+.pd dl{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}.pd dt{color:var(--mute)}.pd dd{margin:0}
+.pending{color:var(--mute);font-style:italic}
+form label{display:block;font-weight:600;margin-top:10px}
+form input,form textarea{width:100%;margin-top:4px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.err{color:#c0262d;font-size:13.5px;min-height:1.2em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#ff8c8c}}
+.qty{display:flex;gap:6px;align-items:center;margin-top:4px}.qty input{text-align:center;width:80px;margin:0}.qty button{width:42px;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:20px;cursor:pointer}
+.cdot{display:inline-flex;align-items:center;gap:5px;margin-right:10px}.cdot i{width:14px;height:14px;border-radius:50%;border:1px solid var(--line);display:inline-block}
+.colors{border:1px solid var(--line);border-radius:10px;margin:10px 0 0;padding:2px 12px 12px}.colors legend{font-weight:600;padding:0 6px}
+.crow{display:flex;align-items:center;gap:10px;margin-top:8px}.crow .sw{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:none}.crow .cn{flex:1;font-weight:600}.crow .qty{margin:0}.crow .qty input{width:56px}
+.sum{background:var(--chip);border-radius:10px;padding:12px;margin-top:14px}.sum div{display:flex;justify-content:space-between;gap:8px}.sum .t{font-weight:700;font-size:18px;border-top:1px solid var(--line);margin-top:6px;padding-top:6px}
+.notice{background:#fff4e5;color:#6b3b00;border:1px solid #f1c27d;border-radius:10px;padding:10px 12px;font-size:14px;margin-top:12px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.car{position:relative;border-radius:12px;overflow:hidden;background:var(--chip);width:100%;width:min(100%,max(220px,calc((100vh - 150px)*9/16)));width:min(100%,max(220px,calc((100svh - 150px)*9/16)));margin:0 auto}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:9/16;width:100%}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;display:grid;place-items:center;min-width:0}
+.slide img{width:100%;height:100%;object-fit:contain;display:block}
+.car .nv{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.car .prev{left:8px}.car .next{right:8px}
+.car .pp,.car .cnt{position:absolute;top:8px;border-radius:999px;background:rgba(0,0,0,.5);color:#fff;padding:3px 10px;font-size:12.5px;border:0}
+.car .pp{right:8px;cursor:pointer}.car .cnt{left:8px}
+.dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+.dots button{position:relative;width:9px;height:9px;border-radius:5px;border:0;padding:0;background:rgba(255,255,255,.8);box-shadow:0 0 0 1px rgba(0,0,0,.3);cursor:pointer;transition:width .2s}
+.dots button::after{content:"";position:absolute;inset:-9px -4px}
+.dots button[aria-current=true]{background:var(--orange);width:22px}
+.sub{font-size:12px;color:var(--mute);line-height:1.2}.up2{font-weight:700;color:var(--ot);font-size:13.5px}
+.bdg{position:absolute;top:-5px;right:-8px;background:var(--orange);color:#fff;border-radius:999px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px;font-style:normal;font-weight:700}
+nav.bottom a svg{position:relative}.nb{position:relative;display:inline-block}
+.btn.wa{background:#1d9a50;color:#fff;display:block;width:100%}
+.cl{display:flex;gap:10px;align-items:center}.cl img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}.ci{flex:1;min-width:0}
+.cq{display:flex;flex-direction:column;align-items:flex-end;gap:6px}.cq .qty button{width:34px;height:34px}.qn{min-width:28px;text-align:center;font-weight:700}
+.rm,.stk{border:0;background:none;color:#c0262d;font-size:13px;cursor:pointer;text-decoration:underline}
+.fr{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--line)}.fr:first-of-type{border-top:0}
+.fr>a{min-width:0;overflow-wrap:anywhere;text-align:right}
+.rad{display:flex;align-items:center;margin-top:8px;font-weight:500}.rad input{width:auto;margin:0 8px 0 0}.rad b{margin-left:auto}
+.ono{font-size:26px;font-weight:700;letter-spacing:1px;color:var(--blue);margin:2px 0 8px}
+.foot{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.foot h3{margin:16px 0 6px;font-size:16px}.foot ol{margin:0;padding-left:20px}.foot a{color:var(--blue)}
+.flogo{width:190px;aspect-ratio:925/470;overflow:hidden;border-radius:8px;background:#f8f8f8}.flogo img{display:block;width:138.4%;max-width:none;margin-left:-19.46%;margin-top:-45.9%}
+.steps{font-size:12px}
+.info details{border-top:1px solid var(--line);padding:8px 0}.info summary{font-weight:600;cursor:pointer}.info p{margin:6px 0}.fl a{margin-right:12px;display:inline-block;padding:4px 0}
+.ft{margin:0;padding-left:18px}.h2s{font-size:17px;margin:14px 0 4px}
+.spec{width:100%;border-collapse:collapse;font-size:14.5px}.spec th,.spec td{text-align:left;padding:7px 4px;border-top:1px solid var(--line);vertical-align:top}.spec th{color:var(--mute);font-weight:500;width:42%}
+.obar{position:fixed;left:0;right:0;bottom:0;z-index:26;background:var(--surface);border-top:1px solid var(--line);padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center}
+.obar .in{display:flex;gap:10px;align-items:center;width:100%;max-width:640px}
+.obar .pr{font-weight:700;color:var(--ot);font-size:18px;line-height:1.15;white-space:nowrap}.obar .pr small{display:block;color:var(--mute);font-weight:500;font-size:12px}
+.obar .btn{flex:1;width:auto;font-size:17px;padding:12px 10px}
+.obar .home{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--blue);flex:none}
+body.pdp nav.bottom,body.flow nav.bottom{display:none}
+body.pdp main,body.flow main{padding-bottom:96px}
+.steps{display:flex;gap:6px;font-size:13px;font-weight:600}.steps span{flex:1;text-align:center;padding:6px 4px;border-radius:999px;background:var(--chip);color:var(--mute)}.steps .on{background:var(--blue);color:var(--on-blue)}
+.pm{display:flex;gap:12px;align-items:center}.pm img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}
+nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding:4px 0 calc(4px + env(safe-area-inset-bottom,0px))}
+nav.bottom a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:500;color:var(--mute);padding:4px 0}
+nav.bottom a[aria-current=page]{color:var(--blue);font-weight:700}
+nav.bottom a[aria-current=page] svg{stroke-width:2.6}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 12px 20px}
+@media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:12px}.promos{grid-template-columns:2fr 1fr}.logo{width:34px}}
+@media (min-width:768px){nav.bottom{display:none}.desknav{display:flex}main{padding-bottom:32px}.quick button{font-size:14px}}
+@media (min-width:1024px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="top">
+  <a class="logo" href="#/" aria-label="Family Fit home"><img src="assets/images/brand/logo.png" alt="Family Fit"></a>
+  <form class="search" role="search" id="sf"><input id="q" type="search" placeholder="Search products" aria-label="Search products" autocomplete="off"><button type="button" class="clr" id="clr" aria-label="Clear search" hidden>×</button><button class="go" type="submit">Search</button></form>
+  <nav class="desknav" id="dn" aria-label="Main"></nav>
+ </div>
+ <div class="tabs" role="tablist" aria-label="Browse">
+  <button role="tab" aria-selected="true" data-tab="foryou">For You</button>
+  <button role="tab" aria-selected="false" data-tab="new">New Arrivals</button>
+  <button role="tab" aria-selected="false" data-tab="cats">Categories</button>
+ </div>
+</div></header>
+<main class="wrap" id="app"></main>
+<footer>© Family Fit · সচেতন জীবন, সুস্থ পরিবার · Prototype</footer>
+<nav class="bottom" id="bn" aria-label="Main"></nav>
+
+<script>
+/* ===== 1. SETTINGS (edit here) ===== */
+const PREORDER_PRICE = 99; // price per piece for every upcoming (pre-order) magnet, in BDT
+const DISTRICTS = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalakathi","Jhenaidah","Joypurhat","Khagrachhari","Khulna","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"];
+const SHOW_RATINGS = false; // turn on only when real customer reviews exist (ratings in the data are demo values)
+const DELIVERY = {inside:{label:"Inside Dhaka",fee:60,days:2}, outside:{label:"Outside Dhaka",fee:120,days:3}}; // delivery charges in BDT
+/* Fill these in. WhatsApp must be country code + number, like 8801XXXXXXXXX. Empty items show "Add here". */
+const CONTACT = {phone:"01965720300", whatsapp:"8801965720300", email:"familyfit09@gmail.com", address:"Online shop", facebook:"https://www.facebook.com/share/1FCAVTD7DD/", hours:""};
+
+/* ===== 2. PRODUCT DATA (edit here) =====
+   images: list of {src, alt}. video: file/data URL or null. rating/reviewCount/soldCount are DEMO values. */
+const ASSET = {d1:"assets/images/cute-dinosaur/d1.jpg", d2:"assets/images/cute-dinosaur/d2.jpg", d3:"assets/images/cute-dinosaur/d3.jpg", d4:"assets/images/cute-dinosaur/d4.jpg", d5:"assets/images/cute-dinosaur/d5.jpg", dinoT:"assets/images/cute-dinosaur/thumb.jpg", vidDino:"assets/videos/cute-dinosaur.mp4", gir:"assets/images/giraffe/gir.jpg", girT:"assets/images/giraffe/thumb.jpg", mei:"assets/images/meimei-rabbit/mei.jpg", meiT:"assets/images/meimei-rabbit/thumb.jpg", lau:"assets/images/laura-bear/lau.jpg",lau2:"assets/images/laura-bear/lau2.jpg",lau3:"assets/images/laura-bear/lau3.jpg",lau4:"assets/images/laura-bear/lau4.jpg",lau5:"assets/images/laura-bear/lau5.jpg",lau6:"assets/images/laura-bear/lau6.jpg", lauT:"assets/images/laura-bear/thumb.jpg", vidLau:"assets/videos/laura-bear.mp4",pd1:"assets/images/potato-duoli-do/pd1.jpg",pd2:"assets/images/potato-duoli-do/pd2.jpg",pd3:"assets/images/potato-duoli-do/pd3.jpg",pd4:"assets/images/potato-duoli-do/pd4.jpg",pd5:"assets/images/potato-duoli-do/pd5.jpg",pd6:"assets/images/potato-duoli-do/pd6.jpg",pdT:"assets/images/potato-duoli-do/thumb.jpg",vidPotato:"assets/videos/potato-duoli-do.mp4",ic1:"assets/images/icecream-soft-brush/ic1.jpg",ic2:"assets/images/icecream-soft-brush/ic2.jpg",ic3:"assets/images/icecream-soft-brush/ic3.jpg",ic4:"assets/images/icecream-soft-brush/ic4.jpg",ic5:"assets/images/icecream-soft-brush/ic5.jpg",ic6:"assets/images/icecream-soft-brush/ic6.jpg",ic7:"assets/images/icecream-soft-brush/ic7.jpg",icT:"assets/images/icecream-soft-brush/thumb.jpg",vidIce:"assets/videos/icecream-soft-brush.mp4",br1:"assets/images/baby-rabbit/br1.jpg",br2:"assets/images/baby-rabbit/br2.jpg",br3:"assets/images/baby-rabbit/br3.jpg",br4:"assets/images/baby-rabbit/br4.jpg",br5:"assets/images/baby-rabbit/br5.jpg",br6:"assets/images/baby-rabbit/br6.jpg",br7:"assets/images/baby-rabbit/br7.jpg",brT:"assets/images/baby-rabbit/thumb.jpg",vidRabbit:"assets/videos/baby-rabbit.mp4",np1:"assets/images/newborn-baby-package/np1.jpg",np2:"assets/images/newborn-baby-package/np2.jpg",np3:"assets/images/newborn-baby-package/np3.jpg",np4:"assets/images/newborn-baby-package/np4.jpg",np5:"assets/images/newborn-baby-package/np5.jpg",np6:"assets/images/newborn-baby-package/np6.jpg",np7:"assets/images/newborn-baby-package/np7.jpg",np8:"assets/images/newborn-baby-package/np8.jpg",np9:"assets/images/newborn-baby-package/np9.jpg",np10:"assets/images/newborn-baby-package/np10.jpg",np11:"assets/images/newborn-baby-package/np11.jpg",np12:"assets/images/newborn-baby-package/np12.jpg",nbT:"assets/images/newborn-baby-package/thumb.jpg"};
+const mk = (id, slug, name, price, extra={}) => ({id, slug, name, description:null, price, currency:"BDT", unit:"piece", cat:"baby", upcoming:false, subtitle:null,
+  images:[], thumb:null, video:null, category:"Baby toothbrush", rating:0, reviewCount:0, soldCount:0,
+  variants:[], colors:[], stockStatus:null, features:[], specTable:[], demo:true, ...extra});
+const PRODUCTS = [
+ mk(1,"cute-dinosaur","Cute Dinosaur",99,{colors:[{name:"Pink",hex:"#f2a7b5"},{name:"Green",hex:"#2f9e6a"},{name:"Yellow",hex:"#e6d84a"}],rating:4.8,reviewCount:36,soldCount:210,images:[{src:ASSET.d1,alt:"Cute Dinosaur kids toothbrushes: soft bristle range"},{src:ASSET.d2,alt:"Three colors in an independent crystal box"},{src:ASSET.d3,alt:"Ultra-fine bristles for deep cleaning"},{src:ASSET.d4,alt:"Rounded small brush head with soft back bumps"},{src:ASSET.d5,alt:"Product specifications"}],
+  thumb:ASSET.dinoT, video:ASSET.vidDino,
+  description:"Cute standing dinosaur kids toothbrush with ultra-soft bristles and a small rounded brush head. Each one comes in its own crystal box.",
+  features:["Bristle diameter ≤0.08mm","6-bundle soft filament bristles, gentle on tender gums","Small rounded brush head (rabbit-ear shape)","Soft rubber bumps on the back for easy tongue cleaning","Independent crystal box packaging","3 colors: Pink, Green, Yellow"],
+  specTable:[["Product name","Cute Standing Dinosaur Kids Toothbrush"],["Material","Bristles (PBT), Handle (PP/TPR/PVC)"],["Nominal bristle diameter","≤0.08mm"],["Colors","Pink, Green, Yellow"],["Box size","145 mm × 54 mm"],["Brush head","12 mm wide × 18 mm long"],["Length below brush head","106 mm"]]}),
+ mk(2,"icecream-soft-brush","Icecream Soft Brush",99,{colors:[{name:"Green",hex:"#9fd24a"},{name:"Pink",hex:"#f0a3c4"},{name:"Chocolate",hex:"#6b3f2a"}],rating:4.6,reviewCount:21,soldCount:150,maxQty:20,video:ASSET.vidIce,images:[{src:ASSET.ic3,alt:"Ice cream handle with brush head, neck and handle sizes"},{src:ASSET.ic5,alt:"Ice cream toothbrushes in green, pink and chocolate colors"},{src:ASSET.ic4,alt:"Ice cream toothbrush selling points: 10000+ soft bristles, ice cream cone design, compact head, dense tufted bristles"},{src:ASSET.ic6,alt:"10,000+ ultra-fine bristles close-up"},{src:ASSET.ic2,alt:"Compact brush head close-up"},{src:ASSET.ic1,alt:"Ice cream toothbrush with ultra-fine tapered bristles and a comparison with ordinary bristles"},{src:ASSET.ic7,alt:"Product information with sizes and material"}],thumb:ASSET.icT,description:"Cute ice cream toothbrush with 10,000+ soft bristles, a compact brush head and an easy-grip handle. Comes in green, pink and chocolate.",features:["Ice cream cone design","10,000+ soft bristles","0.1mm soft bristles","Dense tufted bristles","Compact 12mm brush head","35mm brush neck","79mm handle"],specTable:[["Product name","Ice Cream Children's Toothbrush"],["Material","PP + TPR"],["Bristles","0.1mm soft bristles"],["Age","0-3 years old"],["Pack","Single pack"],["Total length","133 mm"],["Brush head width","12 mm"],["Brush neck","35 mm"],["Handle","79 mm"],["Size note","Sizes are measured by hand and may differ by 1-2 cm"]]}),
+ mk(3,"giraffe","Giraffe",99,{colors:[{name:"Yellow",hex:"#f4d35e"},{name:"Blue",hex:"#7fcfe8"},{name:"Pink",hex:"#f5a9bf"},{name:"Green",hex:"#7ccf4f"}],rating:4.7,reviewCount:18,soldCount:132,images:[{src:ASSET.gir,alt:"Giraffe toothbrushes"}],thumb:ASSET.girT}),
+ mk(4,"laura-bear","Laura Bear",99,{colors:[{name:"Pink",hex:"#f4a6a0"},{name:"Blue",hex:"#8fbfe8"}],video:ASSET.vidLau,rating:4.9,reviewCount:42,soldCount:260,images:[{src:ASSET.lau,alt:"Ten thousand fine soft bristles close-up"},{src:ASSET.lau2,alt:"Panda toothbrush with a short anti-slip handle held in a small hand"},{src:ASSET.lau3,alt:"Quick-dry bristles shown against a damp, air-tight brush head"},{src:ASSET.lau4,alt:"Fine bristle tufts close-up"},{src:ASSET.lau5,alt:"Blue panda and pink toothbrushes"},{src:ASSET.lau6,alt:"Panda toothbrush and case with sizes"}],thumb:ASSET.lauT,description:"Cute panda cartoon toothbrush with a short anti-slip handle that is easy to grip. Soft, fine bristles. Comes with a case that has vent holes.",features:["Ten thousand fine soft bristles (10k+ branched bristle tufts)","Bristle diameter 0.1mm","Soft bristle strength","Short anti-slip handle, easy to grip","Cute panda shape","Comes with a case that has vent holes"],specTable:[["Product name","Panda Cartoon Brush & Case Set"],["Handle material","PP + PVC"],["Bristle material","PBT"],["Bristle strength","Soft"],["Bristle diameter","0.1mm"],["Brush size","9.5 × 3 cm"],["Handle length","9.5 cm"],["Brush width","3 cm"],["Case height","13 cm"],["Case width","6.5 cm"]]}),
+ mk(5,"baby-rabbit","Baby Rabbit",99,{colors:[{name:"Orange",hex:"#f28c28"},{name:"Blue",hex:"#6fa8dc"},{name:"Red",hex:"#d93a32"}],rating:4.7,reviewCount:29,soldCount:175,video:ASSET.vidRabbit,images:[{src:ASSET.br1,alt:"Cute bunny toothbrushes in red, blue and orange next to a pink cup"},{src:ASSET.br2,alt:"Ultrasonic bristle embedding close-up"},{src:ASSET.br3,alt:"Cute bunny toothbrushes in orange, blue, pink and red"},{src:ASSET.br4,alt:"Product information with sizes: 14.5 cm long, 2.5 cm brush head, 3 cm wide"},{src:ASSET.br5,alt:"10,000+ ultra-soft bristles close-up"},{src:ASSET.br6,alt:"Bundle brush head with spaces between the bristle tufts"},{src:ASSET.br7,alt:"Small brush head on baby teeth"}],thumb:ASSET.brT,description:"Cute bunny toothbrush with 10,000+ soft bristles and a small brush head. Comes in different colors.",features:["Cute bunny design","10,000+ soft bristles","Small brush head","Multi-directional brush head","Bundle brush head with spaces between the bristle tufts","Ultrasonic bristle embedding"],specTable:[["Product name","Cute Silicone Soft-Bristle Brush"],["Applicable age","3-12 years old"],["Material","PP + PVC soft rubber + PBT"],["Total length","14.5 cm"],["Brush head length","2.5 cm"],["Base width","3 cm"]]}),
+ mk(6,"potato-duoli-do","Potato Duoli Do",99,{colors:[{name:"Pink",hex:"#f4a6c0"},{name:"Red",hex:"#e0463d"}],rating:4.5,reviewCount:17,soldCount:98,video:ASSET.vidPotato,images:[{src:ASSET.pd1,alt:"Pink and red doll toothbrushes with the crystal box"},{src:ASSET.pd2,alt:"Full silicone doll handle with non-slip grip, close-up"},{src:ASSET.pd3,alt:"Soft bristle close-up with raised dots on the back of the brush head"},{src:ASSET.pd4,alt:"Crystal box packaging with pink and red doll toothbrushes"},{src:ASSET.pd5,alt:"Detail display: raised dots on the back, dual-level bristles, silicone handle"},{src:ASSET.pd6,alt:"Product information with sizes and materials"}],thumb:ASSET.pdT,description:"Cute 3D doll toothbrush with a full silicone handle and soft, dual-level bristles. Comes in a clear crystal box. Available in red and pink.",features:["Cute 3D doll character","Full silicone handle with non-slip grip","Soft bristles, 0.1mm or finer","Dual-level bristle arrangement","Raised dots on the back of the brush head","Clear crystal box packaging","2 colors: Red, Pink"],specTable:[["Product name","3D Character Toothbrush"],["Handle material","PP + PVC"],["Bristle material","PBT"],["Nominal bristle diameter","≤0.1mm"],["Colors","Red, Pink"],["Total length","115 mm"],["Brush head","15 mm wide × 18 mm long"],["Box size","125 mm × 60 mm"],["Size note","Sizes are measured by hand and may differ slightly. Please refer to the actual product."]]}),
+ mk(7,"meimei-rabbit","Meimei Rabbit",99,{rating:4.8,reviewCount:33,soldCount:190,images:[{src:ASSET.mei,alt:"Meimei Rabbit toothbrush"}],thumb:ASSET.meiT}),
+ mk(8,"newborn-baby-package","Newborn Baby Package",3000,{cat:"newborn",category:"Newborn Products",unit:"package",subtitle:"Complete newborn set",colors:[{name:"Blue",hex:"#7fcfe8"},{name:"Pink",hex:"#f4a6c0"}],
+  images:[{src:ASSET.np1,alt:"Baby cloths with cartoon prints in pink, green and blue"},{src:ASSET.np2,alt:"Soft cloud-pattern baby towels and blanket in blue, pink, yellow and green"},{src:ASSET.np3,alt:"Three glass baby milk bottles with silicone covers and boxes"},{src:ASSET.np4,alt:"Pink baby care kit box with brush, comb, thermometer, nasal aspirator, clippers and scissors"},{src:ASSET.np5,alt:"Colorful folded baby cloths (rumal) in a basket"},{src:ASSET.np6,alt:"Colorful folded baby cloths (rumal) in a stack"},{src:ASSET.np7,alt:"Colorful hand-stitched baby katha"},{src:ASSET.np8,alt:"Baby washcloths in pastel colors with a box"},{src:ASSET.np9,alt:"Baby clothes with embroidery in pink and cream"},{src:ASSET.np10,alt:"Embroidered baby clothes in pink, yellow and purple"},{src:ASSET.np11,alt:"Printed baby clothes with an orange strawberry pattern"},{src:ASSET.np12,alt:"Printed baby clothes with a blue strawberry pattern"}],thumb:ASSET.nbT,
+  description:"A complete newborn package with everything a new baby needs in the first days. The whole package is ৳3000.",
+  features:["Baby Cap Towel: 1 piece","Baby Bath Towel: 1 piece","Baby Milk Bottle: 1 piece","Baby Care Kit: 1 box","Baby Katha: 3 pieces","Baby Clothes (Nima): 3 pieces","Baby Cloth (Printed): 3 pieces","Baby Cloth / রুমাল: 1 box","Baby Welcloth: 1 piece","Baby Nappy: 6 pieces","Total price for the whole package: ৳3000"]})
+];
+
+/* Homepage sections (edit here). dealPrice: null = no deal set, so the normal price shows. */
+const HIGH_SELECTION = ["cute-dinosaur","baby-rabbit"];
+const SUPER_DEALS = [{slug:"laura-bear",dealPrice:null},{slug:"meimei-rabbit",dealPrice:null}];
+const UP_IMG  = {vase:"assets/images/fridge-magnets/thumb-vase.jpg", espresso:"assets/images/fridge-magnets/thumb-espresso.jpg", mushroom:"assets/images/fridge-magnets/thumb-mushroom.jpg", mug:"assets/images/fridge-magnets/thumb-mug.jpg", mooncake:"assets/images/fridge-magnets/thumb-mooncake.jpg"};
+const UP_FULL = {vase:"assets/images/fridge-magnets/full-vase.jpg", espresso:"assets/images/fridge-magnets/full-espresso.jpg", mushroom:"assets/images/fridge-magnets/full-mushroom.jpg", mug:"assets/images/fridge-magnets/full-mug.jpg", mooncake:"assets/images/fridge-magnets/full-mooncake.jpg"};
+const CATEGORIES = [{id:"baby",label:"Baby Toothbrush"},{id:"newborn",label:"Newborn Products"},{id:"magnet",label:"3D Fridge Magnets"}];
+/* Upcoming products: same shape as normal products, but price is null and ordering is closed. Names are temporary: replace with real names. */
+const mkUp = (n, slug, name, k) => mk(100+n, slug, name, PREORDER_PRICE, {upcoming:true, subtitle:"3D Fridge Magnet", cat:"magnet", category:"3D Fridge Magnet", demo:false, features:["Each magnet is unique"], images:[{src:UP_FULL[k],alt:name}], thumb:UP_IMG[k]});
+const UPCOMING = [mkUp(1,"porcelain-vase","Porcelain vase","vase"), mkUp(2,"espresso-machine","Espresso machine","espresso"), mkUp(3,"mushroom-house","Mushroom house","mushroom"),
+ mkUp(4,"beer-mug","Beer mug","mug"), mkUp(5,"mooncake-bunnies","Mooncake bunnies","mooncake")];
+const ALL_ITEMS = () => PRODUCTS.concat(UPCOMING, custom).filter(p => !hidden.includes(p.slug)).map(p => stockOv[p.slug] ? {...p, stockStatus: stockOv[p.slug]} : p); // custom = products added in Admin, hidden = hidden slugs
+
+/* ===== 3. HELPERS ===== */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const taka = n => "৳" + Number(n).toLocaleString("en-US");
+const ICON = {home:"M3 11l9-8 9 8v10h-6v-6H9v6H3z",chat:"M4 4h16v12H8l-4 4z",cart:"M3 4h2l2 11h11l2-8H6M9 20h.01M17 20h.01",user:"M12 12a4 4 0 100-8 4 4 0 000 8M4 21c0-4 4-6 8-6s8 2 8 6",
+ sparkle:"M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",grid:"M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z",search:"M11 4a7 7 0 100 14 7 7 0 000-14M16 16l5 5",
+ tag:"M3 12V3h9l9 9-9 9zM7.5 7.5h.01",truck:"M2 6h11v9H2zM13 9h5l3 3v3h-8zM6 18h.01M17 18h.01",heart:"M12 20s-8-5-8-11a4.5 4.5 0 018-3 4.5 4.5 0 018 3c0 6-8 11-8 11z",back:"M15 5l-7 7 7 7"};
+const icon = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
+const stars = r => { const f = Math.round(r); return `<span class="star" aria-label="${r} out of 5">${"★".repeat(f)}${"☆".repeat(5-f)}</span>`; };
+function placeholder(name){ // clearly-labelled temporary image
+ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#dbe8f7"/><circle cx="200" cy="165" r="62" fill="#2164AC" opacity=".18"/><text x="200" y="260" font-family="sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#1c3d66">${esc(name)}</text><text x="200" y="292" font-family="sans-serif" font-size="17" text-anchor="middle" fill="#4a6384">Placeholder: photo coming soon</text></svg>`;
+ return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+const thumbOf = p => p.thumb || (p.images[0] && p.images[0].src) || placeholder(p.name);
+
+/* ===== 4. STATE ===== */
+let query = "", gallerySel = 0, cat = "all";
+const NAV = [["#/","Home","home"],["#/messages","Messages","chat"],["#/cart","Cart","cart"],["#/me","Me","user"]];
+
+/* ===== 5. VIEWS ===== */
+function renderNav(h){
+  const cur = h === "#/" || /^#\/(product|soon|order)/.test(h) ? "#/" : /^#\/checkout/.test(h) ? "#/cart" : /^#\/(placed|track)/.test(h) ? "#/me" : h;
+ const html = NAV.map(([href,label,ic]) => `<a href="${href}" ${href===cur?'aria-current="page"':""}><span class="nb">${icon(ic)}${href==="#/cart"&&cartCount()?`<i class="bdg">${cartCount()}</i>`:""}</span><span>${label}</span></a>`).join("");
+ $("#bn").innerHTML = html; $("#dn").innerHTML = html;
+}
+function card(p){
+ const priceHtml = `<div class="price">${taka(p.price)} <small>/ ${p.unit}</small></div>`;
+ const meta = !(SHOW_RATINGS && p.rating) && !p.upcoming ? "" : p.upcoming ? `<div class="meta"><span>Pre-order available</span></div>`
+  : `<div class="meta"><span>${stars(p.rating)} ${p.rating}${p.demo?'<span class="dm">demo</span>':""}</span><span>${p.soldCount} sold</span></div>`;
+ return `<a class="card" href="#/product/${p.slug}" aria-label="${esc(p.name)}${", "+taka(p.price)+" per piece"+(p.upcoming?", pre-order":"")}">
+  <div class="ph"><img src="${thumbOf(p)}" alt="${esc(p.name)}" loading="lazy"></div>
+  <div class="b"><span class="tag">${p.upcoming ? "Coming soon" : p.stockStatus === "Out of stock" ? "Out of stock" : esc(p.category)}</span><h3>${esc(p.name)}</h3>${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}${priceHtml}${meta}</div></a>`;
+}
+function renderGrid(){
+ const q = query.trim().toLowerCase();
+ const list = q ? ALL_ITEMS().filter(p => (p.name + " " + (p.subtitle || "")).toLowerCase().includes(q)) : cat === "all" ? ALL_ITEMS() : ALL_ITEMS().filter(p => p.cat === cat);
+ const g = $("#grid"); if(!g) return;
+ const label = cat === "all" ? "All products" : CATEGORIES.find(c => c.id === cat).label;
+ g.innerHTML = list.length ? list.map(card).join("")
+  : q ? `<div class="empty"><h3>No products match “${esc(query.trim())}”</h3><p>Check the spelling or try a shorter name, like “rabbit”.</p><button class="btn" id="showAll">Show all products</button></div>`
+  : `<div class="empty"><h3>${esc(label)}: coming soon</h3><p>No products have been added to this category yet.</p></div>`;
+ $("#ptitle").textContent = q ? "Search results" : label;
+ $("#count").textContent = `${list.length} ${list.length===1?"item":"items"}`;
+ document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-selected", String(!q && c.dataset.cat === cat)));
+ const b = $("#showAll"); if(b) b.onclick = clearSearch;
+}
+function miniItem(p, dealPrice){
+ const pr = dealPrice!=null ? `${taka(dealPrice)} <s>${taka(p.price)}</s>` : taka(p.price);
+ return `<a class="mini" href="#/product/${p.slug}"><div class="mi"><img src="${thumbOf(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="mp">${pr}</div><div class="mn">${esc(p.name)}</div></a>`;
+}
+function viewHome(){
+ const quick = [["sparkle","New Arrivals","new"],["grid","Categories","cats"],["search","Search","search"],["truck","Delivery","soon/delivery"]];
+ $("#app").innerHTML = `
+ <section class="quick" aria-label="Shortcuts">${quick.map(([ic,l,t])=>`<button data-go="${t}"><span class="ic">${icon(ic)}</span>${l}</button>`).join("")}</section>
+ <section class="picks" aria-label="Featured"${SUPER_DEALS.some(d=>d.dealPrice!=null)?"":' style="grid-template-columns:1fr"'}>
+  <div class="panel"><h2>High Selection</h2><div class="two">${HIGH_SELECTION.map(s=>ALL_ITEMS().find(p=>p.slug===s)).filter(Boolean).map(p=>miniItem(p)).join("")}</div></div>
+  ${SUPER_DEALS.some(d=>d.dealPrice!=null)?`<div class="panel"><h2>Super Deals</h2><div class="two">${SUPER_DEALS.map(d=>[ALL_ITEMS().find(p=>p.slug===d.slug),d.dealPrice]).filter(a=>a[0]).map(a=>miniItem(a[0],a[1])).join("")}</div></div>`:""}
+ </section>
+ <section class="up" aria-label="Upcoming products"><div class="uph"><h2>Upcoming Products</h2></div>
+  <div class="row">${ALL_ITEMS().filter(p => p.upcoming).map(u=>`<a class="ui" href="#/product/${u.slug}"><img src="${thumbOf(u)}" alt="${esc(u.name)}" loading="lazy"><div class="un">${esc(u.name)}</div><div class="sub">${esc(u.subtitle || "")}</div><div class="up2">${taka(u.price)}</div></a>`).join("")}</div></section>
+ <div class="chips" id="products" role="tablist" aria-label="Product categories">${[{id:"all",label:"All"}].concat(CATEGORIES).map(c=>`<button class="chip" role="tab" data-cat="${c.id}" aria-selected="false">${c.label}</button>`).join("")}</div>
+ <div class="sh" style="margin-top:10px"><h2 id="ptitle"></h2><span class="demo-note"><span id="count"></span></span></div>
+ <section class="grid" id="grid" aria-live="polite"></section>${footHtml()}`;
+ renderGrid();
+}
+function viewSoon(title, text){
+ $("#app").innerHTML = `<div class="soon" style="margin-top:12px"><h2>${esc(title)}</h2><p>${esc(text)}</p><a class="btn" href="#/" style="display:inline-block">Back to home</a></div>`;
+}
+function viewProduct(slug){
+ const p = ALL_ITEMS().find(x => x.slug === slug);
+ if(!p){ viewSoon("Product not found","This product does not exist. Go back and pick one from the list."); return; }
+ const imgs = p.images.length ? p.images : [{src:placeholder(p.name), alt:p.name+" placeholder", ph:true}];
+ const video = p.video ? `<div class="vid"><video controls playsinline preload="metadata" src="${p.video}">Your browser cannot play this video.</video></div>`
+  : "";
+ const del = `Inside Dhaka ${taka(DELIVERY.inside.fee)}, ${DELIVERY.inside.days} days · Outside Dhaka ${taka(DELIVERY.outside.fee)}, ${DELIVERY.outside.days} days`;
+ const soon = t => `<span class="pending">${t}</span>`;
+ const multi = imgs.length > 1;
+ $("#app").innerHTML = `<div class="pd">
+  <a class="back" href="#/">${icon("back")} Back</a>
+  ${video}
+  <div class="box gal"><div class="car">
+   <div class="slides" id="gal" tabindex="0" aria-label="Product images">${imgs.map((im,i) => `<div class="slide"><img src="${im.src}" alt="${esc(im.alt)}" ${i?'loading="lazy"':""}></div>`).join("")}</div>
+   ${multi ? `<button class="nv prev" id="gp" aria-label="Previous image">‹</button><button class="nv next" id="gn" aria-label="Next image">›</button>
+   <span class="cnt" id="gc" aria-hidden="true"></span><button class="pp" id="gpp">❚❚ Pause</button>
+   <div class="dots" id="gd">${imgs.map((_,i) => `<button data-i="${i}" aria-label="Show image ${i+1}"></button>`).join("")}</div>` : ""}</div>
+   ${imgs[0].ph ? `<p class="cap">Placeholder image. The real photo will replace it.</p>` : ""}</div>
+  <div class="box"><h1>${esc(p.name)}</h1>${p.subtitle ? `<div class="sub" style="font-size:14px">${esc(p.subtitle)}</div>` : ""}
+   ${p.upcoming ? `<div class="price">${taka(p.price)} <small>/ ${p.unit}</small></div><div class="meta" style="margin-top:4px"><span class="tag">Coming soon · Pre-order open</span></div>`
+   : `<div class="price">${taka(p.price)} <small>/ ${p.unit}</small></div>
+   <div class="meta" style="margin-top:4px">${SHOW_RATINGS && p.rating ? `${stars(p.rating)} ${p.rating} (${p.reviewCount} reviews) · ${p.soldCount} sold ${p.demo?'<span class="dm">demo data</span>':""}` : ""}</div>`}
+   <dl><dt>Category</dt><dd>${esc(p.category)}</dd>
+   <dt>Description</dt><dd>${p.description ? esc(p.description) : soon("Description coming soon")}</dd>
+   <dt>Features</dt><dd>${p.features.length ? `<ul class="ft">${p.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : soon("To be added")}</dd>
+   <dt>Colors</dt><dd>${p.colors.length ? p.colors.map(c => `<span class="cdot"><i style="background:${c.hex}"></i>${esc(c.name)}</span>`).join("") : soon("Not set yet")}</dd>
+   <dt>Stock</dt><dd>${p.upcoming ? "Pre-order" : esc(p.stockStatus || "In stock")}</dd>
+   <dt>Delivery</dt><dd>${del}</dd></dl>
+   ${p.specTable.length ? `<h2 class="h2s">Specifications</h2><table class="spec">${p.specTable.map(r => `<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join("")}</table>` : ""}</div>
+  ${p.upcoming ? `<p class="cap" style="text-align:center">Coming soon. You can pre-order now. When the product is in hand, we will call you to confirm your order.</p>` : ""}
+  <div class="box">${waBtn("Hello Family Fit, I have a question about " + p.name + ".", "Questions? Discuss on WhatsApp")}</div>
+  <div class="obar" id="obar"><div class="in"><a class="home" href="#/" aria-label="Home">${icon("home")}</a><a class="home" href="#/cart" aria-label="Cart" style="position:relative">${icon("cart")}${cartCount() ? `<i class="bdg">${cartCount()}</i>` : ""}</a>
+   ${p.upcoming ? `<div class="pr">${taka(p.price)}<small>per piece</small></div><a class="btn o" href="#/order/${p.slug}">Pre-order</a>`
+   : `<div class="pr">${taka(p.price)}<small>per piece</small></div>${p.stockStatus === "Out of stock" ? `<button class="btn o" disabled>Out of stock</button>` : `<a class="btn o" href="#/order/${p.slug}">Order Now</a>`}`}</div></div></div>`;
+ initGallery(imgs.length);
+}
+
+/* Gallery: moves to the next image every 3 seconds. Visitors can swipe, use arrows or dots, or pause it. */
+let galTimer = null;
+function stopGallery(){ clearInterval(galTimer); galTimer = null; }
+function initGallery(n){
+ const sc = $("#gal"); if(!sc || n < 2) return;
+ const dots = [...document.querySelectorAll("#gd button")], cnt = $("#gc"), pp = $("#gpp");
+ let idx = 0, busyUntil = 0, paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const mark = () => { dots.forEach((d,j) => d.setAttribute("aria-current", String(j === idx))); cnt.textContent = (idx+1) + " / " + n; };
+ const go = i => { idx = (i + n) % n; busyUntil = Date.now() + 700; sc.scrollTo({left: idx * sc.clientWidth, behavior: "smooth"}); mark(); };
+ const start = () => { stopGallery(); if(!paused) galTimer = setInterval(() => go(idx + 1), 3000); };
+ const setPaused = v => { paused = v; pp.textContent = v ? "▶ Play" : "❚❚ Pause"; pp.setAttribute("aria-label", v ? "Play slideshow" : "Pause slideshow"); start(); };
+ $("#gp").onclick = () => { go(idx - 1); start(); };
+ $("#gn").onclick = () => { go(idx + 1); start(); };
+ dots.forEach(d => d.onclick = () => { go(+d.dataset.i); start(); });
+ pp.onclick = () => setPaused(!paused);
+ sc.addEventListener("scroll", () => { if(Date.now() < busyUntil) return; const i = Math.round(sc.scrollLeft / sc.clientWidth); if(i !== idx){ idx = i; mark(); } });
+ sc.addEventListener("pointerdown", stopGallery);
+ sc.addEventListener("pointerup", start); sc.addEventListener("pointercancel", start);
+ setPaused(paused); mark();
+}
+
+/* ===== Cart, orders and contact. Cart and orders are saved in this browser only (no server yet). ===== */
+const store = {get(k,d){ try{ const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }};
+let custom = store.get("ff_products", []), hidden = store.get("ff_hidden", []), stockOv = store.get("ff_stock", {});
+let cart = store.get("ff_cart", []).filter(l => ALL_ITEMS().some(p => p.slug === l.slug));
+let orders = store.get("ff_orders", []);
+const item = s => ALL_ITEMS().find(x => x.slug === s);
+const cartCount = () => cart.reduce((a,l) => a + l.q, 0);
+const cartSub = () => cart.reduce((a,l) => a + item(l.slug).price * l.q, 0);
+const lineName = l => item(l.slug).name + (l.color ? " (" + l.color + ")" : "");
+const saveCart = () => { store.set("ff_cart", cart); renderNav(location.hash || "#/"); };
+function addToCart(slug, lines){
+ lines.forEach(({color,q}) => { const e = cart.find(l => l.slug === slug && l.color === color); if(e) e.q = Math.min(item(slug).maxQty || 99, e.q + q); else cart.push({slug, color, q}); });
+ saveCart();
+}
+const orderNo = () => { const d = new Date(), z = n => String(n).padStart(2,"0"), c = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; let r = "";
+ for(let i = 0; i < 4; i++) r += c[Math.floor(Math.random() * c.length)];
+ return `FF-${String(d.getFullYear()).slice(2)}${z(d.getMonth()+1)}${z(d.getDate())}-${r}`; };
+const waHref = msg => { const n = (CONTACT.whatsapp || "").replace(/\D/g, ""); return n ? `https://wa.me/${n}?text=${encodeURIComponent(msg)}` : "#/soon/whatsapp"; };
+const waBtn = (msg, label = "Discuss on WhatsApp") => `<a class="btn wa" href="${waHref(msg)}"${CONTACT.whatsapp ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`;
+const validate = v => ({nm: v.nm.length < 2 ? "Enter your name." : "", ph: /^(?:\+?88)?01[3-9]\d{8}$/.test(v.ph) ? "" : "Enter a valid Bangladesh mobile number, like 01712345678.", ad: v.ad.length < 8 ? "Enter your full delivery address." : "", dt: v.dt ? "" : "Choose your district."});
+
+function footHtml(){
+ const c = CONTACT, row = (k, v, href) => `<div class="fr"><span>${k}</span>${v ? (href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(v)}</a>` : `<span>${esc(v)}</span>`) : '<span class="pending">Add here</span>'}</div>`;
+ return `<section class="foot" id="contact" aria-label="About Family Fit">
+  <div class="flogo"><img src="assets/images/brand/logo-footer.jpg" alt="Family Fit: সচেতন জীবন, সুস্থ পরিবার"></div>
+  <p style="margin:8px 0 0">More than a shop: family health information and essential products for mothers, children and elders.</p>
+  <h3>Contact us</h3>${row("Phone", c.phone, c.phone && "tel:" + c.phone)}${row("WhatsApp", c.whatsapp, c.whatsapp && waHref("Hello Family Fit"))}${row("Email", c.email, c.email && "mailto:" + c.email)}${row("Address", c.address)}${row("Facebook page", c.facebook, c.facebook)}${c.hours ? row("Open hours", c.hours) : ""}
+  <div style="margin-top:10px">${waBtn("Hello Family Fit, I have a question.")}</div>
+  <h3>Delivery</h3>${Object.values(DELIVERY).map(d => `<div class="fr"><span>${d.label} (${d.days} days)</span><span>${taka(d.fee)}</span></div>`).join("")}
+  <h3>How to order</h3><ol><li>Choose a product, color and quantity.</li><li>Add to cart, then enter your name, phone and address.</li><li>Place the order and keep your order number.</li></ol>
+  <p class="cap">Pre-order customers get a call to confirm their order once the product is in hand.</p><h3>Information</h3><p class="fl"><a href="#/info/about">About</a><a href="#/info/faq">FAQ</a><a href="#/soon/delivery">Delivery</a><a href="#/info/returns">Returns</a><a href="#/info/privacy">Privacy</a><a href="#/info/terms">Terms</a></p><p class="cap"><a href="#/admin">Admin (prototype)</a></p></section>`;
+}
+
+/* Step 1: choose color and quantity */
+let draft = null;
+const stepper = (i, val, lbl, min) => `<div class="qty"><button type="button" data-i="${i}" data-d="-1" aria-label="Decrease ${esc(lbl)}">−</button><input id="q${i}" class="qin" data-i="${i}" type="number" min="${min}" max="99" value="${val}" inputmode="numeric" aria-label="${esc(lbl)} quantity"><button type="button" data-i="${i}" data-d="1" aria-label="Increase ${esc(lbl)}">+</button></div>`;
+function viewOrder(slug){
+ const p = item(slug); if(!p){ viewSoon("Page not found","That product does not exist."); return; }
+ if(p.stockStatus === "Out of stock" && !p.upcoming){ viewSoon("Out of stock","This product is out of stock right now."); return; }
+ const cols = p.colors, hasC = cols.length > 0, min = hasC ? 0 : 1;
+ if(!draft || draft.slug !== slug) draft = {slug, q: hasC ? cols.map((c,i) => i === 0 ? 1 : 0) : [1]};
+ $("#app").innerHTML = `<div class="pd flowpage"><a class="back" href="#/product/${p.slug}">${icon("back")} Back to product</a>
+  <div class="box"><div class="pm"><img src="${thumbOf(p)}" alt=""><div><b>${esc(p.name)}</b>${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}<div class="price" style="font-size:20px">${taka(p.price)} <small>/ piece</small></div></div></div>
+   ${p.upcoming ? `<div class="notice" style="margin-top:10px"><b>Pre-order.</b> When the product is in hand, you will get a call to confirm your order.</div>` : ""}</div>
+  <div class="box"><h2 style="margin:0">${hasC ? "Choose color and quantity" : "Choose quantity"}</h2>${p.maxQty ? `<p class="cap" style="margin:4px 0 0">Maximum ${p.maxQty} per ${hasC ? "color" : "order"} in one order.</p>` : ""}
+   ${hasC ? cols.map((c,i) => `<div class="crow"><span class="sw" style="background:${c.hex}"></span><span class="cn">${esc(c.name)}</span>${stepper(i, draft.q[i], c.name, 0)}</div>`).join("") : `<div class="crow"><span class="cn">Quantity</span>${stepper(0, draft.q[0], "Quantity", 1)}</div>`}
+   <div class="err" id="hint" role="status"></div><div class="sum" id="sumbox" aria-live="polite"></div></div>
+  <div style="display:flex;gap:8px"><button class="btn g" id="addc" style="flex:1">Add to cart</button><button class="btn o" id="next" style="flex:1">Order Now</button></div></div>`;
+ const total = () => draft.q.reduce((a,b) => a + b, 0);
+ const lines = () => hasC ? cols.map((c,i) => ({color:c.name, q:draft.q[i]})).filter(l => l.q > 0) : [{color:null, q:draft.q[0]}];
+ const upd = () => { const n = total(); $("#sumbox").innerHTML = `<div><span>Total quantity</span><span>${n}</span></div><div class="t"><span>Subtotal</span><span>${taka(p.price * n)}</span></div>`;
+  $("#addc").disabled = $("#next").disabled = n < 1; $("#hint").textContent = n < 1 ? "Choose at least 1 piece in any color." : ""; };
+ const clamp = v => Math.min(p.maxQty || 99, Math.max(min, Number.isFinite(v) ? v : min));
+ const app = $("#app");
+ app.querySelectorAll(".qty button").forEach(b => b.onclick = () => { const i = +b.dataset.i; draft.q[i] = clamp(draft.q[i] + Number(b.dataset.d)); $("#q"+i).value = draft.q[i]; upd(); });
+ app.querySelectorAll(".qin").forEach(inp => { inp.oninput = () => { const n = parseInt(inp.value, 10), v = clamp(n); draft.q[+inp.dataset.i] = v; if(n > (p.maxQty || 99)) inp.value = v; upd(); }; inp.onchange = () => { inp.value = draft.q[+inp.dataset.i]; }; });
+ $("#addc").onclick = () => { if(total() < 1) return; addToCart(slug, lines()); draft = null; location.hash = "#/cart"; };
+ $("#next").onclick = () => { if(total() < 1) return; addToCart(slug, lines()); draft = null; location.hash = "#/checkout"; };
+ upd();
+}
+
+/* Cart page */
+function viewCart(){
+ if(!cart.length){ $("#app").innerHTML = `<div class="soon" style="margin-top:12px"><h2>Your cart is empty</h2><p>Add a product to start your order.</p><a class="btn" href="#/">Shop products</a></div>`; return; }
+ $("#app").innerHTML = `<div class="pd"><h1 style="margin:6px 0">Cart (${cartCount()})</h1>
+  ${cart.map((l,i) => { const p = item(l.slug); return `<div class="box cl"><img src="${thumbOf(p)}" alt=""><div class="ci"><b>${esc(p.name)}</b>${l.color ? `<div class="sub">${esc(l.color)}</div>` : ""}<div class="price" style="font-size:16px">${taka(p.price)}</div>${p.upcoming ? '<span class="tag">Pre-order</span>' : ""}</div>
+   <div class="cq"><div class="qty"><button data-i="${i}" data-d="-1" aria-label="Decrease quantity">−</button><span class="qn">${l.q}</span><button data-i="${i}" data-d="1" aria-label="Increase quantity">+</button></div><button class="rm" data-i="${i}">Remove</button></div></div>`; }).join("")}
+  <div class="box"><div class="sum"><div><span>Subtotal</span><span>${taka(cartSub())}</span></div><div><span>Delivery</span><span>${taka(DELIVERY.inside.fee)} Dhaka · ${taka(DELIVERY.outside.fee)} outside</span></div></div>
+   <a class="btn o" href="#/checkout" style="display:block;margin-top:12px">Checkout</a><p style="text-align:center;margin:10px 0 0"><a href="#/" style="color:var(--blue);font-weight:600">Continue shopping</a></p></div>
+  <div class="box">${waBtn("Hello Family Fit, I need help with my cart.", "Need help? Discuss on WhatsApp")}</div></div>`;
+ $("#app").querySelectorAll("[data-d]").forEach(b => b.onclick = () => { const l = cart[+b.dataset.i]; l.q = Math.min(item(l.slug).maxQty || 99, Math.max(1, l.q + Number(b.dataset.d))); saveCart(); viewCart(); });
+ $("#app").querySelectorAll(".rm").forEach(b => b.onclick = () => { cart.splice(+b.dataset.i, 1); saveCart(); viewCart(); });
+}
+
+/* Checkout: details + delivery area, then place order */
+let chk = {area:"inside"};
+function viewCheckout(){
+ if(!cart.length){ location.replace("#/cart"); return; }
+ $("#app").innerHTML = `<div class="pd flowpage"><a class="back" href="#/cart">${icon("back")} Back to cart</a>
+  <div class="box"><h2 style="margin:0 0 8px">Your items</h2>${cart.map(l => `<div class="fr"><span>${esc(lineName(l))} × ${l.q}</span><span>${taka(item(l.slug).price * l.q)}</span></div>`).join("")}</div>
+  <form class="box" id="of" novalidate><h2 style="margin:0">Delivery details</h2>
+   <label for="nm">Your name</label><input id="nm" autocomplete="name"><div class="err" id="e-nm"></div>
+   <label for="ph">Phone number</label><input id="ph" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX"><div class="err" id="e-ph"></div>
+   <label for="ad">Delivery address</label><textarea id="ad" rows="3" autocomplete="street-address"></textarea><div class="err" id="e-ad"></div>
+   <label for="dt">District</label><select id="dt"><option value="">Choose district</option>${DISTRICTS.map(d => `<option>${d}</option>`).join("")}</select><div class="err" id="e-dt"></div>
+   <fieldset class="colors"><legend>Delivery area</legend>${Object.entries(DELIVERY).map(([k,d]) => `<label class="rad"><input type="radio" name="area" value="${k}" ${chk.area === k ? "checked" : ""}> ${d.label} (${d.days} days) <b>${taka(d.fee)}</b></label>`).join("")}</fieldset>
+   <label for="nt">Order note (optional)</label><textarea id="nt" rows="2"></textarea>
+   <div class="sum" id="tot" style="margin-top:14px"></div>
+   <button class="btn o" type="submit" style="margin-top:14px">Place order</button><p class="cap">Your name, phone and address are used to process this order. See <a href="#/info/privacy" style="color:var(--blue)">Privacy</a>.</p></form></div>`;
+ const upd = () => { const fee = DELIVERY[chk.area].fee, sub = cartSub();
+  $("#tot").innerHTML = `<div><span>Subtotal</span><span>${taka(sub)}</span></div><div><span>Delivery (${DELIVERY[chk.area].label})</span><span>${taka(fee)}</span></div><div class="t"><span>Total</span><span>${taka(sub + fee)}</span></div>`; };
+ document.querySelectorAll("input[name=area]").forEach(r => r.onchange = () => { chk.area = r.value; upd(); });
+ ["nm","ph","ad","nt","dt"].forEach(k => { const el = $("#"+k); el.value = chk[k] || ""; el.oninput = () => { chk[k] = el.value; }; });
+ $("#dt").onchange = () => { chk.dt = $("#dt").value; if(chk.dt){ chk.area = chk.dt === "Dhaka" ? "inside" : "outside"; document.querySelector(`input[name=area][value=${chk.area}]`).checked = true; upd(); } };
+ upd();
+ $("#of").onsubmit = e => { e.preventDefault();
+  const v = {nm:$("#nm").value.trim(), ph:$("#ph").value.replace(/[\s-]/g,""), ad:$("#ad").value.trim(), nt:$("#nt").value.trim(), dt:$("#dt").value}, er = validate(v);
+  Object.keys(er).forEach(k => $("#e-"+k).textContent = er[k]);
+  const bad = Object.keys(er).find(k => er[k]); if(bad){ $("#"+bad).focus(); return; }
+  $("#of button[type=submit]").disabled = true;
+  const sub = cartSub(), fee = DELIVERY[chk.area].fee;
+  const o = {no:orderNo(), date:new Date().toISOString(), name:v.nm, phone:v.ph, address:v.ad, district:v.dt, note:v.nt, area:chk.area, sub, fee, total:sub + fee, status:"Placed",
+   lines:cart.map(l => ({name:item(l.slug).name, color:l.color, q:l.q, price:item(l.slug).price, pre:!!item(l.slug).upcoming}))};
+  orders.unshift(o); store.set("ff_orders", orders); cart = []; saveCart(); chk = {area:chk.area}; location.hash = "#/placed/" + o.no;
+ };
+}
+
+/* Order confirmation / tracking page */
+function viewOrderPage(no, placed){
+ const o = orders.find(x => x.no === String(no).toUpperCase());
+ if(!o){ viewSoon("Order not found","We could not find that order number on this device. Until the store system is connected, an order is only saved on the device that placed it."); return; }
+ const d = DELIVERY[o.area], pre = o.lines.some(l => l.pre);
+ const msg = `Hello Family Fit, my order number is ${o.no}.\n` + o.lines.map(l => `${l.name}${l.color ? " (" + l.color + ")" : ""} x ${l.q}`).join("\n") + `\nTotal: ${taka(o.total)} (${d.label} delivery ${taka(o.fee)})\nName: ${o.name}\nPhone: ${o.phone}\nAddress: ${o.address}`;
+ $("#app").innerHTML = `<div class="pd flowpage">
+  <div class="box" style="text-align:center"><h2 style="margin:0">${placed ? "Order placed" : "Track your order"}</h2><p style="margin:4px 0 0;color:var(--mute)">Your order number</p><div class="ono">${o.no}</div>
+   <div class="notice" style="text-align:left"><b>Demo.</b> This order is saved on this device only and has not been sent to Family Fit yet.</div></div>
+  <div class="box">${o.status === "Cancelled" ? `<div class="notice"><b>This order was cancelled.</b></div>` : `<div class="steps">${["Placed","Confirmed","Out for delivery","Delivered"].map((s,i,a) => `<span class="${i <= a.indexOf(o.status) ? "on" : ""}">${s === "Placed" ? "Order placed" : s}</span>`).join("")}</div>`}<p class="cap">Status updates will work once the store system is connected.</p></div>
+  <div class="box"><h2 style="margin:0 0 8px">Order details</h2>${o.lines.map(l => `<div class="fr"><span>${esc(l.name)}${l.color ? " (" + esc(l.color) + ")" : ""} × ${l.q}</span><span>${taka(l.price * l.q)}</span></div>`).join("")}
+   <div class="sum" style="margin-top:8px"><div><span>Subtotal</span><span>${taka(o.sub)}</span></div><div><span>Delivery (${d.label})</span><span>${taka(o.fee)}</span></div><div class="t"><span>Total</span><span>${taka(o.total)}</span></div></div>
+   <div class="fr" style="margin-top:8px"><span>Name</span><span>${esc(o.name)}</span></div><div class="fr"><span>Phone</span><span>${esc(o.phone)}</span></div><div class="fr"><span>Address</span><span style="text-align:right">${esc(o.address)}, ${esc(o.district || "")}</span></div>${o.note ? `<div class="fr"><span>Note</span><span>${esc(o.note)}</span></div>` : ""}</div>
+  <div class="box"><h2 style="margin:0 0 8px">Delivery information</h2>${Object.values(DELIVERY).map(x => `<div class="fr"><span>${x.label} (${x.days} days)</span><span>${taka(x.fee)}</span></div>`).join("")}
+   <p style="margin:8px 0 0">Your delivery area: <b>${d.label}</b>, charge <b>${taka(o.fee)}</b>, delivery time <b>${d.days} days</b>.</p>${pre ? `<p style="margin:6px 0 0">Pre-order items: when the product is in hand, you will get a call to confirm your order.</p>` : ""}</div>
+  ${waBtn("Hello Family Fit, I want to discuss my order " + o.no + ".", "Discuss this order on WhatsApp")}<a class="btn" href="#/" style="margin-top:8px" id="homeBtn">Back to home</a></div>`;
+}
+/* ===== Admin (prototype): works on this device's orders only. A real admin needs a database and a login. ===== */
+const STATUSES = ["Placed","Confirmed","Out for delivery","Delivered","Cancelled"];
+let adminF = "All", adminQ = "";
+const custWa = (ph, no) => "https://wa.me/88" + ph.replace(/\D/g,"").replace(/^88/,"") + "?text=" + encodeURIComponent("Hello, this is Family Fit about your order " + no + ".");
+function adminCard(o){
+ return `<div class="box"><div class="fr" style="border:0;padding:0"><b>${o.no}${o.sample ? " (sample)" : ""}</b><span class="tag">${o.status}</span></div>
+  <div class="sub">${new Date(o.date).toLocaleString("en-GB")}</div>
+  <div class="fr"><span>${esc(o.name)}</span><span>${esc(o.phone)}</span></div><div class="sub">${esc(o.address)}, ${esc(o.district || "")} · ${DELIVERY[o.area].label}</div>
+  ${o.lines.map(l => `<div class="fr"><span>${esc(l.name)}${l.color ? " (" + esc(l.color) + ")" : ""} × ${l.q}${l.pre ? " · Pre-order" : ""}</span><span>${taka(l.price * l.q)}</span></div>`).join("")}
+  <div class="fr"><b>Total (delivery ${taka(o.fee)} included)</b><b>${taka(o.total)}</b></div>${o.note ? `<div class="sub">Note: ${esc(o.note)}</div>` : ""}
+  <div class="sub" style="margin-top:8px">Status</div><select class="st" data-no="${o.no}" aria-label="Order status">${STATUSES.map(s => `<option ${s === o.status ? "selected" : ""}>${s}</option>`).join("")}</select>
+  <div style="display:flex;gap:8px;margin-top:10px"><a class="btn" style="flex:1" href="tel:${esc(o.phone)}">Call</a><a class="btn wa" style="flex:1" href="${custWa(o.phone, o.no)}" target="_blank" rel="noopener">WhatsApp</a></div></div>`;
+}
+const adminTabs = cur => `<div class="chips" style="margin-top:6px"><a class="achip" href="#/admin" aria-selected="${cur === "orders"}">Orders</a><a class="achip" href="#/admin/products" aria-selected="${cur === "products"}">Products</a></div>`;
+function viewAdmin(a, b){ if(a === "products") return viewAdminProducts(); if(a === "product") return viewAdminForm(b); return viewAdminOrders(); }
+function viewAdminOrders(){
+ $("#app").innerHTML = `<div class="pd"><a class="back" href="#/">${icon("back")} Back to shop</a><h1 style="margin:0">Admin: Orders</h1>${adminTabs("orders")}
+  <div class="notice"><b>Prototype.</b> This shows only orders placed on this device. There is no login yet. Orders from real customers will appear here after the database and admin login are added.</div>
+  <div class="chips" id="af" style="margin-top:0"></div><input id="aq" placeholder="Search order number, name or phone" aria-label="Search orders" value="${esc(adminQ)}">
+  <div id="alist" style="display:grid;gap:12px"></div>
+  <div style="display:flex;gap:8px"><button class="btn g" id="smp" style="flex:1">Add 3 sample orders</button><button class="btn g" id="clr2" style="flex:1">Remove samples</button></div></div>`;
+ const draw = () => {
+  const n = s => s === "All" ? orders.length : orders.filter(o => o.status === s).length, q = adminQ.trim().toLowerCase();
+  $("#af").innerHTML = ["All", ...STATUSES].map(s => `<button class="achip" data-f="${s}" aria-selected="${adminF === s}">${s} (${n(s)})</button>`).join("");
+  $("#af").querySelectorAll(".achip").forEach(b => b.onclick = () => { adminF = b.dataset.f; draw(); });
+  const list = orders.filter(o => (adminF === "All" || o.status === adminF) && (!q || (o.no + o.name + o.phone).toLowerCase().includes(q)));
+  $("#alist").innerHTML = list.length ? list.map(adminCard).join("") : `<div class="soon">No orders to show.</div>`;
+  $("#alist").querySelectorAll(".st").forEach(s => s.onchange = () => { const o = orders.find(x => x.no === s.dataset.no); o.status = s.value; store.set("ff_orders", orders); draw(); });
+ };
+ $("#aq").oninput = e => { adminQ = e.target.value; draw(); };
+ $("#smp").onclick = () => {
+  [["Sample Customer A","01700000001","inside","Placed",[["Cute Dinosaur","Pink",2]]],["Sample Customer B","01700000002","outside","Confirmed",[["Giraffe","Blue",1],["Laura Bear","Pink",1]]],["Sample Customer C","01700000003","inside","Delivered",[["Porcelain vase",null,1]]]].forEach(([name,phone,area,status,ls]) => {
+   const lines = ls.map(([nm,c,q]) => { const p = PRODUCTS.concat(UPCOMING).find(x => x.name === nm); return {name:nm, color:c, q, price:p.price, pre:!!p.upcoming}; });
+   const sub = lines.reduce((a,l) => a + l.price * l.q, 0), fee = DELIVERY[area].fee;
+   orders.unshift({no:orderNo(), date:new Date().toISOString(), name, phone, address:"Sample address, Dhaka", note:"", area, sub, fee, total:sub + fee, status, lines, sample:true}); });
+  store.set("ff_orders", orders); draw(); };
+ $("#clr2").onclick = () => { orders = orders.filter(o => !o.sample); store.set("ff_orders", orders); draw(); };
+ draw();
+}
+const isCustom = p => custom.some(c => c.slug === p.slug);
+function viewAdminProducts(){
+ const all = PRODUCTS.concat(UPCOMING, custom);
+ $("#app").innerHTML = `<div class="pd"><a class="back" href="#/">${icon("back")} Back to shop</a><h1 style="margin:0">Admin: Products</h1>${adminTabs("products")}
+  <div class="notice"><b>Prototype.</b> Products you add are saved on this device only, so customers cannot see them yet. They will appear on the live website after the database is connected.</div>
+  <a class="btn o" href="#/admin/product/new">+ Add new product</a>
+  ${all.map(p => `<div class="box cl"><img src="${thumbOf(p)}" alt=""><div class="ci"><b>${esc(p.name)}</b><div class="sub">${esc(p.category)}${p.upcoming ? " · Pre-order" : ""}${isCustom(p) ? "" : " · built-in"}</div><div class="price" style="font-size:16px">${taka(p.price)}</div>${hidden.includes(p.slug) ? '<span class="tag">Hidden</span>' : ""}${stockOv[p.slug] ? '<span class="tag">Out of stock</span>' : ""}</div>
+   <div class="cq">${isCustom(p) ? `<a class="btn g" style="padding:6px 14px" href="#/admin/product/${p.slug}">Edit</a>` : ""}<button class="rm" data-s="${p.slug}">${hidden.includes(p.slug) ? "Show" : "Hide"}</button><button class="stk" data-k="${p.slug}">${stockOv[p.slug] ? "Mark in stock" : "Mark out of stock"}</button></div></div>`).join("")}
+  <p class="cap">Built-in sample products can be hidden or shown. Editing them will come with the database.</p></div>`;
+ $("#app").querySelectorAll(".rm").forEach(b => b.onclick = () => { const s = b.dataset.s;
+  hidden = hidden.includes(s) ? hidden.filter(x => x !== s) : hidden.concat(s); store.set("ff_hidden", hidden);
+  cart = cart.filter(l => l.slug !== s || !hidden.includes(s)); saveCart(); viewAdminProducts(); });
+ $("#app").querySelectorAll(".stk").forEach(b => b.onclick = () => { const s = b.dataset.k; if(stockOv[s]) delete stockOv[s]; else stockOv[s] = "Out of stock"; store.set("ff_stock", stockOv); viewAdminProducts(); });
+}
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "product";
+const loadImg = f => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => ok(im); im.onerror = no; im.src = r.result; }; r.onerror = no; r.readAsDataURL(f); });
+const cropData = (im, w, h, sx, sy, sw, sh, q) => { const c = document.createElement("canvas"); c.width = w; c.height = h; c.getContext("2d").drawImage(im, sx, sy, sw, sh, 0, 0, w, h); return c.toDataURL("image/jpeg", q); };
+function viewAdminForm(slug){
+ const ex = slug === "new" ? null : custom.find(c => c.slug === slug);
+ if(slug !== "new" && !ex){ viewSoon("Product not found","Only products you added yourself can be edited."); return; }
+ const f = ex || {name:"", price:"", cat:"baby", upcoming:false, subtitle:"", description:"", features:[], colors:[], images:[], thumb:null};
+ let imgs = f.images.map(i => i.src), ths = f.thumb ? [f.thumb] : [], cols = f.colors.map(c => ({...c}));
+ $("#app").innerHTML = `<div class="pd flowpage"><a class="back" href="#/admin/products">${icon("back")} Back to products</a><h1 style="margin:0">${ex ? "Edit product" : "Add new product"}</h1>
+  <form class="box" id="pf" novalidate>
+   <label for="pn">Product name</label><input id="pn" value="${esc(f.name)}"><div class="err" id="e-pn"></div>
+   <label for="pp">Price per piece (৳)</label><input id="pp" type="number" min="1" inputmode="numeric" value="${f.price}"><div class="err" id="e-pp"></div>
+   <label for="pm">Max quantity per order (optional)</label><input id="pm" type="number" min="1" inputmode="numeric" value="${f.maxQty || ""}">
+   <label for="pc">Category</label><select id="pc">${CATEGORIES.map(c => `<option value="${c.id}" ${c.id === f.cat ? "selected" : ""}>${c.label}</option>`).join("")}</select>
+   <label class="rad"><input type="checkbox" id="pu" ${f.upcoming ? "checked" : ""}> Upcoming product (customers pre-order)</label>
+   <label for="ps">Small label next to the name (optional)</label><input id="ps" placeholder="e.g. 3D Fridge Magnet" value="${esc(f.subtitle || "")}">
+   <label for="pd">Description</label><textarea id="pd" rows="3">${esc(f.description || "")}</textarea>
+   <label for="pf2">Features (one per line)</label><textarea id="pf2" rows="4">${esc(f.features.join("\n"))}</textarea>
+   <label>Colors (optional)</label><div id="cols"></div><button type="button" class="btn g" id="addcol" style="margin-top:8px">+ Add color</button>
+   <label for="pi">Photos (up to 5; the first is the card photo)</label><input id="pi" type="file" accept="image/*" multiple><div class="err" id="e-pi"></div>
+   <div class="thumbs" id="prev"></div><p class="cap">Tap a photo to remove it. Video upload needs real hosting and will come with the database.</p>
+   <button class="btn o" type="submit" style="margin-top:12px">Save product</button>
+   ${ex ? `<button class="btn g" type="button" id="del" style="margin-top:8px;width:100%">Delete product</button>` : ""}</form></div>`;
+ const drawCols = () => { $("#cols").innerHTML = cols.map((c,i) => `<div class="crow"><input type="color" class="cc" data-i="${i}" value="${c.hex}" aria-label="Color" style="width:46px;height:40px;padding:2px;margin:0"><input class="cn2" data-i="${i}" placeholder="Color name" value="${esc(c.name)}" aria-label="Color name" style="margin:0"><button type="button" class="rm" data-i="${i}" aria-label="Remove color">✕</button></div>`).join("");
+  document.querySelectorAll(".cc").forEach(x => x.oninput = () => { cols[+x.dataset.i].hex = x.value; });
+  document.querySelectorAll(".cn2").forEach(x => x.oninput = () => { cols[+x.dataset.i].name = x.value; });
+  document.querySelectorAll("#cols .rm").forEach(x => x.onclick = () => { cols.splice(+x.dataset.i, 1); drawCols(); }); };
+ const drawPrev = () => { $("#prev").innerHTML = imgs.map((s,i) => `<button type="button" data-i="${i}" aria-label="Remove photo ${i+1}"><img src="${s}" alt=""></button>`).join("");
+  document.querySelectorAll("#prev button").forEach(b => b.onclick = () => { imgs.splice(+b.dataset.i, 1); ths.splice(+b.dataset.i, 1); drawPrev(); }); };
+ $("#addcol").onclick = () => { cols.push({name:"", hex:"#2265ab"}); drawCols(); };
+ $("#pi").onchange = async e => { $("#e-pi").textContent = "";
+  for(const file of [...e.target.files]){ if(imgs.length >= 5){ $("#e-pi").textContent = "Maximum 5 photos."; break; }
+   try{ const im = await loadImg(file), w = Math.min(800, im.width), h = Math.round(im.height * w / im.width), s = Math.min(im.width, im.height);
+    imgs.push(cropData(im, w, h, 0, 0, im.width, im.height, 0.72)); ths.push(cropData(im, 480, 480, (im.width - s) / 2, (im.height - s) / 2, s, s, 0.72));
+   }catch(err){ $("#e-pi").textContent = "Could not read one of the photos."; } }
+  e.target.value = ""; drawPrev(); };
+ drawCols(); drawPrev();
+ $("#pf").onsubmit = e => { e.preventDefault();
+  const name = $("#pn").value.trim(), price = parseInt($("#pp").value, 10);
+  $("#e-pn").textContent = name.length < 2 ? "Enter a product name." : ""; $("#e-pp").textContent = price >= 1 ? "" : "Enter a price.";
+  if(name.length < 2){ $("#pn").focus(); return; } if(!(price >= 1)){ $("#pp").focus(); return; }
+  const cat = $("#pc").value, p = mk(ex ? ex.id : Date.now(), ex ? ex.slug : slugify(name) + "-" + Date.now().toString(36), name, price,
+   {cat, category:CATEGORIES.find(c => c.id === cat).label, upcoming:$("#pu").checked, subtitle:$("#ps").value.trim() || null, description:$("#pd").value.trim() || null,
+    features:$("#pf2").value.split("\n").map(s => s.trim()).filter(Boolean), colors:cols.filter(c => c.name.trim()).map(c => ({name:c.name.trim(), hex:c.hex})),
+    images:imgs.map((s,i) => ({src:s, alt:name + " photo " + (i+1)})), thumb:ths[0] || imgs[0] || null, maxQty:parseInt($("#pm").value, 10) || null, demo:false});
+  const prev = custom.slice(); if(ex) custom[custom.indexOf(ex)] = p; else custom.push(p);
+  if(!store.set("ff_products", custom)){ custom = prev; $("#e-pi").textContent = "Not enough space on this device. Use fewer or smaller photos."; return; }
+  location.hash = "#/admin/products"; };
+ if(ex) $("#del").onclick = function(){ if(this.dataset.s !== "1"){ this.dataset.s = "1"; this.textContent = "Tap again to delete"; return; }
+  custom = custom.filter(c => c.slug !== slug); store.set("ff_products", custom); cart = cart.filter(l => l.slug !== slug); saveCart(); location.hash = "#/admin/products"; };
+}
+const DRAFT = `<div class="notice"><b>Draft.</b> Family Fit will review and complete this page before launch.</div>`;
+const INFO = {
+ about:["Family Fit", `<p style="font-size:19px;font-weight:600;color:var(--blue);margin:0">সচেতন জীবন, সুস্থ পরিবার</p>
+  <p class="cap" style="margin:0 0 10px">Aware living, healthy family</p>
+  <p>Family Fit is more than a shop. We believe a healthy family begins with the right information and the right everyday products.</p>
+  <h2 class="h2s">Information for your family</h2><p>We share information about family health, so you can look after your loved ones with more confidence.</p>
+  <h2 class="h2s">We care for every member</h2><p>Our care is for the whole family, especially <b>mothers</b>, <b>children</b> and <b>elders</b>.</p>
+  <h2 class="h2s">Essentials, carefully chosen</h2><p>We collect products that are necessary and essential for a family, so you find what you need in one place.</p>
+  <a class="btn o" href="#/" style="display:block;margin-top:14px">Shop our products</a>`],
+ faq:["FAQ", `${DRAFT}
+  <details><summary>How do I order?</summary><p>Open a product, choose color and quantity, then tap Add to cart or Order Now. Enter your name, phone number, district and address, and place the order. You get an order number.</p></details>
+  <details><summary>How much is delivery?</summary><p>${Object.values(DELIVERY).map(d => d.label + " " + taka(d.fee)).join(", ")}.</p></details>
+  <details><summary>How long does delivery take?</summary><p>${Object.values(DELIVERY).map(d => d.label + " " + d.days + " days").join(", ")}.</p></details>
+  <details><summary>What is a pre-order?</summary><p>Products marked Coming soon are not in hand yet. When the product is in hand, you will get a call to confirm your order.</p></details>
+  <details><summary>How do I track my order?</summary><p>Open the Me tab and enter your order number.</p></details>
+  <details><summary>How can I pay?</summary><p>You can pay Cash on Delivery, which means you pay when your order is delivered. You can also pay in advance by bKash, Nagad or bank card.</p></details>
+  <details><summary>How can I contact you?</summary><p>Use the Discuss on WhatsApp button, or call ${esc(CONTACT.phone)}.</p></details>`],
+ returns:["Returns and cancellation", `<h2 class="h2s">Payment</h2><p>You can pay Cash on Delivery, which means you pay when your order is delivered to you. You can also pay in advance by bKash, Nagad or bank card.</p>
+  <h2 class="h2s">Checking your product</h2><p>When the delivery arrives, you can open the outer delivery box and look at the product. Please do not unbox the product itself.</p>
+  <h2 class="h2s">Returning a product</h2><p>If you return a product, you pay the delivery charge (${Object.values(DELIVERY).map(d => d.label + " " + taka(d.fee)).join(", ")}).</p>
+  <h2 class="h2s">Cancelling an order</h2><p>After you place an order, you can cancel it before 6 PM on the next day. To cancel, contact us on WhatsApp or call ${esc(CONTACT.phone)}.</p>
+  <h2 class="h2s">Refund for advance payment</h2><p>If you paid in advance and cancel, we deduct the delivery charge and refund the rest within 5 days.</p>`],
+ privacy:["Privacy", `<p>We maintain your privacy. We will not share your information with anyone else.</p>
+  <h2 class="h2s">What we collect</h2><p>When you place an order we collect your name, phone number, district, delivery address, optional note and the items you ordered.</p>
+  <h2 class="h2s">How we use it</h2><p>We use your data only to deliver your product accurately and for follow-up on your order.</p>
+  <h2 class="h2s">Your rights</h2><p>You can ask us to update or delete your data at any time. Contact us on WhatsApp, call ${esc(CONTACT.phone)}, or email ${esc(CONTACT.email)}.</p>`],
+ terms:["Terms and conditions", `${DRAFT}<p>By placing an order on this website, you agree to these terms.</p>
+  <h2 class="h2s">1. Prices</h2><p>All prices are in Bangladeshi Taka (৳). The price shown on the product page when you place your order is the price you pay. We may change prices at any time, but this does not affect orders already placed.</p>
+  <h2 class="h2s">2. Placing an order</h2><p>Please give your correct name, phone number and full delivery address. We may call you to confirm your order.</p>
+  <h2 class="h2s">3. Delivery charge</h2><p>${Object.values(DELIVERY).map(d => d.label + " " + taka(d.fee)).join(", ")}. The delivery charge is added to your total at checkout. Delivery time: ${Object.values(DELIVERY).map(d => d.label + " " + d.days + " days").join(", ")}.</p>
+  <h2 class="h2s">4. Payment</h2><p>You can pay Cash on Delivery, which means you pay when your order is delivered. You can also pay in advance by bKash, Nagad or bank card.</p>
+  <h2 class="h2s">5. Pre-orders</h2><p>Products marked Coming soon can be pre-ordered. When the product is in hand, we will call you to confirm your order.</p>
+  <h2 class="h2s">6. Cancellation</h2><p>You can cancel an order before 6 PM on the day after you place it. If you paid in advance and cancel, we deduct the delivery charge and refund the rest within 5 days.</p>
+  <h2 class="h2s">7. Returns</h2><p>You may open the outer delivery box to see the product, but please do not unbox the product itself. If you return a product, you pay the delivery charge. See the <a href="#/info/returns" style="color:var(--blue)">Returns and cancellation</a> page.</p>
+  <h2 class="h2s">8. Product information</h2><p>We try to show our products accurately. Colors may look slightly different on different screens.</p>
+  <h2 class="h2s">9. Privacy</h2><p>We use your data only to deliver your order and follow up on it. See the <a href="#/info/privacy" style="color:var(--blue)">Privacy</a> page.</p>
+  <h2 class="h2s">10. Changes to these terms</h2><p>We may update these terms from time to time. The terms on this page when you place your order apply to that order.</p>
+  <h2 class="h2s">11. Contact</h2><p>WhatsApp or call ${esc(CONTACT.phone)}, or email ${esc(CONTACT.email)}.</p>`]};
+function viewInfo(k){
+ const d = INFO[k]; if(!d){ viewSoon("Page not found","That page does not exist."); return; }
+ $("#app").innerHTML = `<div class="pd"><a class="back" href="#/">${icon("back")} Back</a><div class="box info"><h1 style="margin:0 0 8px">${d[0]}</h1>${d[1]}</div><div class="box">${waBtn("Hello Family Fit, I have a question.")}</div></div>`;
+}
+function viewMe(){
+ $("#app").innerHTML = `<div class="pd"><h1 style="margin:6px 0">Me</h1>
+  <form class="box" id="tf"><h2 style="margin:0 0 6px">Track an order</h2><label for="tn" style="margin-top:0">Order number</label><input id="tn" placeholder="FF-261016-AB12" autocapitalize="characters"><div class="err" id="e-tn"></div><button class="btn" type="submit" style="margin-top:8px">Track</button></form>
+  <div class="box"><h2 style="margin:0 0 6px">My orders (this device)</h2>${orders.length ? orders.map(o => `<a class="fr" href="#/track/${o.no}"><span><b>${o.no}</b><br><span class="sub">${new Date(o.date).toLocaleDateString("en-GB")}</span></span><span>${taka(o.total)} ›</span></a>`).join("") : '<p class="pending" style="margin:0">No orders yet.</p>'}</div>
+  <div class="box">${waBtn("Hello Family Fit", "Discuss on WhatsApp")}</div></div>`;
+ $("#tf").onsubmit = e => { e.preventDefault(); const n = $("#tn").value.trim().toUpperCase(); if(orders.some(o => o.no === n)) location.hash = "#/track/" + n; else $("#e-tn").textContent = "No order with this number on this device."; };
+}
+function viewMessages(){
+ $("#app").innerHTML = `<div class="soon" style="margin-top:12px"><h2>Message us</h2><p>Chat with Family Fit on WhatsApp.${CONTACT.phone ? " Or call " + esc(CONTACT.phone) + "." : ""}</p>${waBtn("Hello Family Fit")}</div>`;
+}
+
+/* ===== 6. SEARCH, TABS, ROUTER ===== */
+function clearSearch(){ query = ""; $("#q").value = ""; $("#clr").hidden = true; renderGrid(); }
+$("#q").addEventListener("input", e => { query = e.target.value; $("#clr").hidden = !query;
+ if(location.hash && location.hash !== "#/"){ location.hash = "#/"; } else renderGrid(); });
+$("#clr").onclick = () => { clearSearch(); $("#q").focus(); };
+$("#sf").onsubmit = e => { e.preventDefault(); if(location.hash!=="#/") location.hash="#/"; setTimeout(()=>{const s=$("#products"); if(s) s.scrollIntoView({behavior:"smooth"}); $("#q").blur();},0); };
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+ document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x===b));
+ { if(location.hash!=="#/") location.hash="#/"; setTimeout(()=>{const s=$("#products"); if(s) s.scrollIntoView({behavior:"smooth"});},0); }
+});
+$("#app").addEventListener("click", e => { const c = e.target.closest(".chip"); if(c){ cat = c.dataset.cat; query = ""; $("#q").value = ""; $("#clr").hidden = true; renderGrid(); return; }
+ const b = e.target.closest("[data-go]"); if(!b) return; const t = b.dataset.go;
+ if(t==="new"||t==="cats") $("#products").scrollIntoView({behavior:"smooth"}); else if(t==="search"){ window.scrollTo({top:0,behavior:"smooth"}); $("#q").focus(); } else location.hash = "#/" + t; });
+const SOON = {messages:["Messages","Chat with Family Fit will be added in a later phase."],cart:["Cart","Your cart will appear here once it is built. For now, order from a product page."],me:["Me","Accounts and order history will be added in a later phase."],
+ categories:["Categories","Category browsing is not built yet. For now, all products are on the home page."],offers:["Offers","No offers are active. When there are, they will appear here."],
+ delivery:["Delivery information","Inside Dhaka: ৳60, 2 days. Outside Dhaka: ৳120, 3 days. The delivery charge is added to your total when you place an order."], whatsapp:["WhatsApp","The WhatsApp number has not been added yet. Once it is added, this button opens a chat with Family Fit."],favorites:["Favorites","Saving favorite products will be added in a later phase."]};
+function route(){
+ const h = location.hash || "#/"; const parts = h.split("/");
+ stopGallery(); renderNav(h);
+ if(h==="#/") viewHome();
+ else if(parts[1]==="product") viewProduct(parts[2]);
+ else if(parts[1]==="order") viewOrder(parts[2]);
+ else if(parts[1]==="cart") viewCart();
+ else if(parts[1]==="me") viewMe();
+ else if(parts[1]==="messages") viewMessages();
+ else if(parts[1]==="checkout") viewCheckout();
+ else if(parts[1]==="placed") viewOrderPage(parts[2], true);
+ else if(parts[1]==="track") viewOrderPage(parts[2], false);
+ else if(parts[1]==="admin") viewAdmin(parts[2], parts[3]);
+ else if(parts[1]==="info") viewInfo(parts[2]);
+ else if(parts[1]==="soon" && SOON[parts[2]]) viewSoon(...SOON[parts[2]]);
+ else if(SOON[parts[1]]) viewSoon(...SOON[parts[1]]);
+ else viewSoon("Page not found","That page does not exist.");
+ document.body.classList.toggle("pdp", !!$("#obar")); document.body.classList.toggle("flow", !!$(".flowpage"));
+ const TT = {cart:"Cart",me:"My orders",checkout:"Checkout",placed:"Order placed",track:"Track order",admin:"Admin",messages:"Message us",info:"Information"};
+ document.title = (parts[1] === "product" && item(parts[2]) ? item(parts[2]).name + " | " : TT[parts[1]] ? TT[parts[1]] + " | " : "") + "Family Fit";
+ window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route); route();
+</script>
+</body>
+</html>

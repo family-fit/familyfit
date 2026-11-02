@@ -8,6 +8,12 @@ Status as of 2 November 2026.
 - [x] Fixed a crash: a stray `,,` after *Meimei Rabbit* left a hole in `PRODUCTS`. Admin → *Add 3 sample orders* crashed with `TypeError` when it looked up "Porcelain vase".
 - [x] Wrote README.md (code documentation) and this plan.
 - [x] Pushed to `github.com/family-fit/familyfit`.
+- [x] **Cover section** on the home page: tagline, Shop and Message buttons, product photos, trust points (cash on delivery, delivery time, fee).
+- [x] **Filters:** category chips with counts, availability (All / Ready to ship / Pre-order), sort (price, name), removable filter tags and "Clear all". Search now also matches category and description, and combines with the filters.
+- [x] **Search bar:** icon, larger touch target, 16 px text (stops iPhone zooming in).
+- [x] **New footer on every page:** contact cards first, then the logo, then delivery, how to order and info links. The public "Admin" link was removed; open `/#/admin` directly.
+- [x] Domain `familyfitbd.com`: `CNAME` file, canonical link and Facebook preview (Open Graph) tags added.
+- [x] Tested at phone (390 px) and desktop (1280 px) widths: no sideways scrolling, no console errors.
 
 ---
 
@@ -36,7 +42,7 @@ Status as of 2 November 2026.
 1. GitHub → `family-fit/familyfit` → **Settings → Pages** → Source: *Deploy from a branch* → `main` / `(root)` → Save.
    The site will be at `https://family-fit.github.io/familyfit/`.
    *Note: free GitHub plans only publish Pages from **public** repositories.*
-2. Buy a domain (e.g. `familyfit.com.bd` or `familyfit.shop`).
+2. Domain: **familyfitbd.com** (the `CNAME` file is already in the repo).
 3. In the domain's DNS settings add:
 
    | Type | Name | Value |
@@ -50,7 +56,7 @@ Status as of 2 November 2026.
 4. Back in **Settings → Pages → Custom domain**, enter the domain. GitHub adds a `CNAME` file to the repo. Wait for the DNS check, then tick **Enforce HTTPS**.
 5. Optional: verify the domain under the organisation's **Settings → Pages**, so no one else can claim it.
 
-**Needed from you:** the domain name.
+**Needed from you:** add the DNS records above at your domain registrar, and turn on Pages (step 1).
 
 ## Phase 2: Send every order to Facebook Messenger
 
@@ -63,7 +69,7 @@ When the customer taps **Place order**:
 
 Settings to add: `CONTACT.messenger = "<page username>"`.
 
-**Needed from you:** the Facebook Page username (from `facebook.com/<username>`). The current `facebook.com/share/…` link cannot be used for `m.me`.
+**Needed from you:** the Facebook Page username (from `facebook.com/<username>`). The `facebook.com/share/1Km1mM22pL/` link works for the footer's Facebook button, but `m.me` needs the username. To find it, open the Page, then **About → Page transparency**, or copy the address bar on a computer.
 
 ## Phase 3: Simple admin login (`admin` / `123`)
 

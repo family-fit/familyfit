@@ -6,6 +6,14 @@
 <title>Family Fit</title>
 <meta name="description" content="Family Fit: family health information and essential products for mothers, children and elders in Bangladesh. সচেতন জীবন, সুস্থ পরিবার">
 <meta name="theme-color" content="#2265ab">
+<link rel="canonical" href="https://familyfitbd.com/">
+<link rel="icon" href="assets/images/brand/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Family Fit">
+<meta property="og:title" content="Family Fit | সচেতন জীবন, সুস্থ পরিবার">
+<meta property="og:description" content="Essential products for mothers, children and elders. Cash on delivery across Bangladesh.">
+<meta property="og:url" content="https://familyfitbd.com/">
+<meta property="og:image" content="https://familyfitbd.com/assets/images/brand/logo-footer.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,10 +34,12 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:va
 .top{display:flex;align-items:center;gap:8px;padding:4px 0}
 .logo{width:28px;flex:none;display:block}
 .logo img{display:block;width:100%;height:auto}
-.search{flex:1;display:flex;border:2px solid var(--orange);border-radius:999px;background:#fff;overflow:hidden;min-width:0}
-.search input{flex:1;min-width:0;border:0;background:transparent;padding:4px 12px;font-size:15px;color:#1c2430;outline:none}
-.search .clr{border:0;background:none;padding:0 8px;color:#5d6877;cursor:pointer;font-size:20px}
-.search .go{border:0;background:var(--orange);color:#fff;padding:0 14px;font-size:14px;font-weight:600;cursor:pointer}
+.search{flex:1;display:flex;align-items:center;border:2px solid var(--orange);border-radius:999px;background:#fff;overflow:hidden;min-width:0;height:42px}
+.search .si{width:18px;height:18px;margin-left:12px;color:#8a95a5}
+.search input{flex:1;min-width:0;height:100%;border:0;background:transparent;padding:0 8px;font-size:16px;color:#1c2430;outline:none}
+.search input::-webkit-search-cancel-button{display:none}
+.search .clr{border:0;background:none;padding:0 10px;height:100%;color:#5d6877;cursor:pointer;font-size:22px}
+.search .go{border:0;background:var(--orange);color:#fff;padding:0 16px;height:100%;font-size:14px;font-weight:700;cursor:pointer}
 .search:focus-within{box-shadow:0 0 0 3px rgba(201,85,43,.3)}
 .desknav{display:none;gap:4px}
 .desknav a{display:flex;gap:6px;align-items:center;padding:6px 10px;border-radius:8px;font-weight:500}
@@ -37,7 +47,63 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:va
 .tabs{display:flex;gap:16px;overflow-x:auto;padding:0 0 1px;font-size:14px;scrollbar-width:none}
 .tabs button{border:0;background:none;padding:1px 2px;font-size:14px;font-weight:600;color:#5d6877;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
 .tabs button[aria-selected=true]{color:var(--blue);border-color:var(--orange)}
-main{padding:12px 0 88px;min-height:70vh}
+main{padding:12px 0 8px;min-height:70vh}
+/* Cover */
+.cover{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(135deg,#174c86 0%,#2265ab 55%,#2f7cc4 100%);color:#fff;padding:22px 18px 18px;display:grid;gap:18px}
+.cover::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07);top:-150px;right:-110px}
+.cover::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(202,85,41,.38);bottom:-140px;left:-70px}
+.cover>*{position:relative;z-index:1}
+.cv-kicker{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:3px 12px 3px 8px;font-size:13px;font-weight:600}
+.cv-kicker svg{width:16px;height:16px}
+.cover h1{margin:12px 0 8px;font-size:clamp(30px,8vw,50px);line-height:1.15;font-weight:700}
+.cover h1 span{color:#ffcfb3}
+.cover p{margin:0;font-size:16px;line-height:1.5;opacity:.93;max-width:32em}
+.cv-cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.cv-cta .btn{padding:12px 22px;font-size:16px}
+.btn.light{background:#fff;color:#174c86}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.65)}
+.cv-art{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cv-art a{display:block;border-radius:14px;overflow:hidden;background:#fff;aspect-ratio:1;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.cv-art img{width:100%;height:100%;object-fit:cover;display:block}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.trust div{background:rgba(255,255,255,.12);border-radius:12px;padding:8px 6px;text-align:center;font-size:12px;line-height:1.3;color:#dce8f6}
+.trust b{display:block;font-size:13.5px;color:#fff}
+/* Filters */
+.filt{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 12px 12px}
+.fhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 2px}
+.fhead h2{margin:0;font-size:20px}.fcount{font-size:13.5px;color:var(--mute);white-space:nowrap}
+.filt .chips{margin-top:10px}
+.chip .n{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 6px;margin-left:4px;border-radius:999px;background:var(--chip);color:var(--blue);font-size:12px}
+.chip[aria-selected=true] .n{background:rgba(255,255,255,.25);color:inherit}
+.frow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.seg{display:flex;background:var(--chip);border-radius:12px;padding:3px;flex:1 1 280px}
+.seg button{flex:1;border:0;background:none;border-radius:9px;padding:8px 6px;font-weight:600;font-size:14px;color:var(--mute);cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed=true]{background:var(--surface);color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.sort{display:flex;align-items:center;gap:8px;flex:1 1 220px;font-size:14px;color:var(--mute);font-weight:600}
+.sort select{margin:0;flex:1;padding:9px 10px;border-radius:12px;background:var(--surface);font-weight:600;font-size:15px}
+.active{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.active:empty{display:none}
+.fx{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--blue);color:var(--blue);background:var(--chip);border-radius:999px;padding:4px 12px;font-size:13.5px;font-weight:600;cursor:pointer}
+.fx.reset{border-color:transparent;background:none;color:var(--ot);text-decoration:underline}
+#grid{margin-top:12px}
+/* Footer */
+footer.site{background:#0f2f52;color:#dbe6f3;margin-top:28px;padding:28px 0 calc(88px + env(safe-area-inset-bottom,0px))}
+body.pdp footer.site,body.flow footer.site{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+footer.site h2{margin:0;font-size:22px;color:#fff}
+.fsub{margin:4px 0 14px;color:#a9bdd4;font-size:14.5px}
+.cgrid{display:grid;grid-template-columns:1fr;gap:10px}
+.ccard{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:12px 14px;color:#fff;min-width:0}
+a.ccard:hover{background:rgba(255,255,255,.14)}
+.ccard small{display:block;color:#a9bdd4;font-size:12.5px;line-height:1.2}.ccard b{display:block;font-weight:600;overflow-wrap:anywhere;line-height:1.35}
+.cic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#ca5529;color:#fff;flex:none}
+.fbrand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;margin-top:26px;padding-top:26px;border-top:1px solid rgba(255,255,255,.13)}
+.fbrand p{margin:0;max-width:34em;color:#c4d3e4;font-size:14.5px}
+.fcols{display:grid;gap:20px;margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13)}
+.fcols h3{margin:0 0 8px;font-size:15.5px;color:#fff}
+.frow2{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:14.5px}
+.fcols ol{margin:0;padding-left:18px;font-size:14.5px}
+.flinks{display:flex;flex-wrap:wrap;gap:2px 16px}.flinks a{color:#dbe6f3;padding:5px 0;text-decoration:underline;text-underline-offset:3px}
+.fnote{font-size:13px;color:#a9bdd4;margin:6px 0 0}
+.fbase{margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.13);text-align:center;font-size:13px;color:#a9bdd4}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--surface);border-radius:12px;padding:7px 2px;border:1px solid var(--line)}
 .quick button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;cursor:pointer;padding:1px;line-height:1.15}
 .quick .ic svg{width:18px;height:18px}.quick .ic{width:32px;height:32px;border-radius:10px;background:var(--chip);color:var(--blue);display:grid;place-items:center}
@@ -140,8 +206,7 @@ nav.bottom a svg{position:relative}.nb{position:relative;display:inline-block}
 .fr>a{min-width:0;overflow-wrap:anywhere;text-align:right}
 .rad{display:flex;align-items:center;margin-top:8px;font-weight:500}.rad input{width:auto;margin:0 8px 0 0}.rad b{margin-left:auto}
 .ono{font-size:26px;font-weight:700;letter-spacing:1px;color:var(--blue);margin:2px 0 8px}
-.foot{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.foot h3{margin:16px 0 6px;font-size:16px}.foot ol{margin:0;padding-left:20px}.foot a{color:var(--blue)}
-.flogo{width:190px;aspect-ratio:925/470;overflow:hidden;border-radius:8px;background:#f8f8f8}.flogo img{display:block;width:138.4%;max-width:none;margin-left:-19.46%;margin-top:-45.9%}
+.flogo{width:240px;aspect-ratio:2/1;overflow:hidden;border-radius:14px;background:#f8f8f8}.flogo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 51%}
 .steps{font-size:12px}
 .info details{border-top:1px solid var(--line);padding:8px 0}.info summary{font-weight:600;cursor:pointer}.info p{margin:6px 0}.fl a{margin-right:12px;display:inline-block;padding:4px 0}
 .ft{margin:0;padding-left:18px}.h2s{font-size:17px;margin:14px 0 4px}
@@ -152,16 +217,22 @@ nav.bottom a svg{position:relative}.nb{position:relative;display:inline-block}
 .obar .btn{flex:1;width:auto;font-size:17px;padding:12px 10px}
 .obar .home{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--blue);flex:none}
 body.pdp nav.bottom,body.flow nav.bottom{display:none}
-body.pdp main,body.flow main{padding-bottom:96px}
 .steps{display:flex;gap:6px;font-size:13px;font-weight:600}.steps span{flex:1;text-align:center;padding:6px 4px;border-radius:999px;background:var(--chip);color:var(--mute)}.steps .on{background:var(--blue);color:var(--on-blue)}
 .pm{display:flex;gap:12px;align-items:center}.pm img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}
 nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding:4px 0 calc(4px + env(safe-area-inset-bottom,0px))}
 nav.bottom a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:500;color:var(--mute);padding:4px 0}
 nav.bottom a[aria-current=page]{color:var(--blue);font-weight:700}
 nav.bottom a[aria-current=page] svg{stroke-width:2.6}
-footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 12px 20px}
-@media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:12px}.promos{grid-template-columns:2fr 1fr}.logo{width:34px}}
-@media (min-width:768px){nav.bottom{display:none}.desknav{display:flex}main{padding-bottom:32px}.quick button{font-size:14px}}
+@media (max-width:380px){.seg button{font-size:13px;padding:8px 4px}.search .go{padding:0 12px}.trust b{font-size:12.5px}}
+@media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:12px}.promos{grid-template-columns:2fr 1fr}.logo{width:34px}.cgrid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:768px){nav.bottom{display:none}.desknav{display:flex}main{padding-bottom:16px}.quick button{font-size:14px}
+ footer.site{padding-bottom:28px}body.pdp footer.site,body.flow footer.site{padding-bottom:104px}
+ .cover{grid-template-columns:1.15fr 1fr;align-items:center;padding:40px 36px 30px;gap:24px 32px}
+ .cv-art{grid-template-columns:1fr 1fr;gap:14px;max-width:380px;justify-self:end;width:100%}
+ .cv-art a:nth-child(2),.cv-art a:nth-child(4){transform:translateY(18px)}
+ .two{display:flex;gap:12px}.two .mini{width:200px;flex:none}
+ .trust{grid-column:1/-1;gap:10px}.trust div{padding:10px;font-size:13px}.trust b{font-size:15px}}
+@media (min-width:900px){.cgrid{grid-template-columns:repeat(3,1fr)}.fcols{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:1024px){.grid{grid-template-columns:repeat(4,1fr)}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
@@ -170,7 +241,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 12px 20px}
 <header><div class="wrap">
  <div class="top">
   <a class="logo" href="#/" aria-label="Family Fit home"><img src="assets/images/brand/logo.png" alt="Family Fit"></a>
-  <form class="search" role="search" id="sf"><input id="q" type="search" placeholder="Search products" aria-label="Search products" autocomplete="off"><button type="button" class="clr" id="clr" aria-label="Clear search" hidden>×</button><button class="go" type="submit">Search</button></form>
+  <form class="search" role="search" id="sf"><svg class="i si" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14M16 16l5 5"/></svg><input id="q" type="search" placeholder="Search toothbrush, newborn…" aria-label="Search products" autocomplete="off"><button type="button" class="clr" id="clr" aria-label="Clear search" hidden>×</button><button class="go" type="submit">Search</button></form>
   <nav class="desknav" id="dn" aria-label="Main"></nav>
  </div>
  <div class="tabs" role="tablist" aria-label="Browse">
@@ -180,7 +251,7 @@ footer{text-align:center;color:var(--mute);font-size:13px;padding:8px 12px 20px}
  </div>
 </div></header>
 <main class="wrap" id="app"></main>
-<footer>© Family Fit · সচেতন জীবন, সুস্থ পরিবার · Prototype</footer>
+<footer class="site" id="sitefoot"></footer>
 <nav class="bottom" id="bn" aria-label="Main"></nav>
 
 <script>
@@ -190,7 +261,7 @@ const DISTRICTS = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura",
 const SHOW_RATINGS = false; // turn on only when real customer reviews exist (ratings in the data are demo values)
 const DELIVERY = {inside:{label:"Inside Dhaka",fee:60,days:2}, outside:{label:"Outside Dhaka",fee:120,days:3}}; // delivery charges in BDT
 /* Fill these in. WhatsApp must be country code + number, like 8801XXXXXXXXX. Empty items show "Add here". */
-const CONTACT = {phone:"01965720300", whatsapp:"8801965720300", email:"familyfit09@gmail.com", address:"Online shop", facebook:"https://www.facebook.com/share/1FCAVTD7DD/", hours:""};
+const CONTACT = {phone:"01965720300", whatsapp:"8801965720300", email:"familyfit09@gmail.com", address:"Online shop", facebook:"https://www.facebook.com/share/1Km1mM22pL/", hours:""};
 
 /* ===== 2. PRODUCT DATA (edit here) =====
    images: list of {src, alt}. video: file/data URL or null. rating/reviewCount/soldCount are DEMO values. */
@@ -234,7 +305,9 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">"
 const taka = n => "৳" + Number(n).toLocaleString("en-US");
 const ICON = {home:"M3 11l9-8 9 8v10h-6v-6H9v6H3z",chat:"M4 4h16v12H8l-4 4z",cart:"M3 4h2l2 11h11l2-8H6M9 20h.01M17 20h.01",user:"M12 12a4 4 0 100-8 4 4 0 000 8M4 21c0-4 4-6 8-6s8 2 8 6",
  sparkle:"M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",grid:"M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z",search:"M11 4a7 7 0 100 14 7 7 0 000-14M16 16l5 5",
- tag:"M3 12V3h9l9 9-9 9zM7.5 7.5h.01",truck:"M2 6h11v9H2zM13 9h5l3 3v3h-8zM6 18h.01M17 18h.01",heart:"M12 20s-8-5-8-11a4.5 4.5 0 018-3 4.5 4.5 0 018 3c0 6-8 11-8 11z",back:"M15 5l-7 7 7 7"};
+ tag:"M3 12V3h9l9 9-9 9zM7.5 7.5h.01",truck:"M2 6h11v9H2zM13 9h5l3 3v3h-8zM6 18h.01M17 18h.01",heart:"M12 20s-8-5-8-11a4.5 4.5 0 018-3 4.5 4.5 0 018 3c0 6-8 11-8 11z",back:"M15 5l-7 7 7 7",
+ phone:"M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2",mail:"M3 6h18v12H3zM3 7l9 6 9-6",pin:"M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11zM12 8a2 2 0 100 4 2 2 0 000-4",
+ fb:"M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z",clock:"M12 3a9 9 0 100 18 9 9 0 000-18M12 7v5l3 2"};
 const icon = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
 const stars = r => { const f = Math.round(r); return `<span class="star" aria-label="${r} out of 5">${"★".repeat(f)}${"☆".repeat(5-f)}</span>`; };
 function placeholder(name){ // clearly-labelled temporary image
@@ -244,7 +317,7 @@ function placeholder(name){ // clearly-labelled temporary image
 const thumbOf = p => p.thumb || (p.images[0] && p.images[0].src) || placeholder(p.name);
 
 /* ===== 4. STATE ===== */
-let query = "", gallerySel = 0, cat = "all";
+let query = "", gallerySel = 0, cat = "all", sort = "rec", avail = "all";
 const NAV = [["#/","Home","home"],["#/messages","Messages","chat"],["#/cart","Cart","cart"],["#/me","Me","user"]];
 
 /* ===== 5. VIEWS ===== */
@@ -261,36 +334,74 @@ function card(p){
   <div class="ph"><img src="${thumbOf(p)}" alt="${esc(p.name)}" loading="lazy"></div>
   <div class="b"><span class="tag">${p.upcoming ? "Coming soon" : p.stockStatus === "Out of stock" ? "Out of stock" : esc(p.category)}</span><h3>${esc(p.name)}</h3>${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}${priceHtml}${meta}</div></a>`;
 }
+/* Filters: search (header box) + category + availability + sort, all combined */
+const SORTS = [["rec","Recommended"],["low","Price: low to high"],["high","Price: high to low"],["az","Name: A to Z"]];
+const AVAIL = [["all","All"],["stock","Ready to ship"],["pre","Pre-order"]];
+const matchQ = (p, q) => !q || [p.name, p.subtitle, p.category, p.description].join(" ").toLowerCase().includes(q);
+const matchAv = p => avail === "all" || (avail === "pre" ? p.upcoming : !p.upcoming && p.stockStatus !== "Out of stock");
 function renderGrid(){
- const q = query.trim().toLowerCase();
- const list = q ? ALL_ITEMS().filter(p => (p.name + " " + (p.subtitle || "")).toLowerCase().includes(q)) : cat === "all" ? ALL_ITEMS() : ALL_ITEMS().filter(p => p.cat === cat);
  const g = $("#grid"); if(!g) return;
+ const q = query.trim().toLowerCase();
+ const base = ALL_ITEMS().filter(p => matchQ(p, q) && matchAv(p));
+ const list = base.filter(p => cat === "all" || p.cat === cat);
+ if(sort === "low") list.sort((a,b) => a.price - b.price);
+ else if(sort === "high") list.sort((a,b) => b.price - a.price);
+ else if(sort === "az") list.sort((a,b) => a.name.localeCompare(b.name));
+ $("#cats").innerHTML = [{id:"all",label:"All"}].concat(CATEGORIES).map(c => { const n = c.id === "all" ? base.length : base.filter(p => p.cat === c.id).length;
+  return `<button class="chip" role="tab" data-cat="${c.id}" aria-selected="${cat === c.id}">${esc(c.label)}<span class="n">${n}</span></button>`; }).join("");
+ document.querySelectorAll("[data-av]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.av === avail)));
  const label = cat === "all" ? "All products" : CATEGORIES.find(c => c.id === cat).label;
- g.innerHTML = list.length ? list.map(card).join("")
-  : q ? `<div class="empty"><h3>No products match “${esc(query.trim())}”</h3><p>Check the spelling or try a shorter name, like “rabbit”.</p><button class="btn" id="showAll">Show all products</button></div>`
-  : `<div class="empty"><h3>${esc(label)}: coming soon</h3><p>No products have been added to this category yet.</p></div>`;
  $("#ptitle").textContent = q ? "Search results" : label;
- $("#count").textContent = `${list.length} ${list.length===1?"item":"items"}`;
- document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-selected", String(!q && c.dataset.cat === cat)));
- const b = $("#showAll"); if(b) b.onclick = clearSearch;
+ $("#count").textContent = `${list.length} ${list.length === 1 ? "item" : "items"}`;
+ const act = [];
+ if(q) act.push(`<button class="fx" data-clear="q" aria-label="Remove search filter">Search: “${esc(query.trim())}” ✕</button>`);
+ if(cat !== "all") act.push(`<button class="fx" data-clear="cat" aria-label="Remove category filter">${esc(label)} ✕</button>`);
+ if(avail !== "all") act.push(`<button class="fx" data-clear="av" aria-label="Remove availability filter">${AVAIL.find(a => a[0] === avail)[1]} ✕</button>`);
+ if(act.length > 1) act.push(`<button class="fx reset" data-clear="all">Clear all</button>`);
+ $("#active").innerHTML = act.join("");
+ g.innerHTML = list.length ? list.map(card).join("")
+  : `<div class="empty"><h3>${q ? `No products match “${esc(query.trim())}”` : "No products here yet"}</h3><p>${q ? "Check the spelling or try a shorter word, like “rabbit”." : "Try another category or clear the filters."}</p><button class="btn" data-clear="all">Show all products</button></div>`;
+}
+function clearFilter(k){
+ if(k === "q" || k === "all"){ query = ""; $("#q").value = ""; $("#clr").hidden = true; }
+ if(k === "cat" || k === "all") cat = "all";
+ if(k === "av" || k === "all") avail = "all";
+ renderGrid();
 }
 function miniItem(p, dealPrice){
  const pr = dealPrice!=null ? `${taka(dealPrice)} <s>${taka(p.price)}</s>` : taka(p.price);
  return `<a class="mini" href="#/product/${p.slug}"><div class="mi"><img src="${thumbOf(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="mp">${pr}</div><div class="mn">${esc(p.name)}</div></a>`;
 }
 function viewHome(){
- const quick = [["sparkle","New Arrivals","new"],["grid","Categories","cats"],["search","Search","search"],["truck","Delivery","soon/delivery"]];
+ const art = ["cute-dinosaur","newborn-baby-package","baby-rabbit","laura-bear"].map(item).filter(Boolean);
  $("#app").innerHTML = `
- <section class="quick" aria-label="Shortcuts">${quick.map(([ic,l,t])=>`<button data-go="${t}"><span class="ic">${icon(ic)}</span>${l}</button>`).join("")}</section>
+ <section class="cover" aria-label="Welcome to Family Fit">
+  <div class="cv-txt">
+   <span class="cv-kicker">${icon("heart")} Family health shop</span>
+   <h1>সচেতন জীবন,<br><span>সুস্থ পরিবার</span></h1>
+   <p>Carefully chosen essentials for mothers, children and elders, delivered to your door across Bangladesh.</p>
+   <div class="cv-cta"><button class="btn light" data-go="shop">Shop products</button>${CONTACT.whatsapp ? `<a class="btn ghost" href="${waHref("Hello Family Fit")}" target="_blank" rel="noopener">Message us</a>` : ""}</div>
+  </div>
+  <div class="cv-art">${art.map(p => `<a href="#/product/${p.slug}" aria-label="${esc(p.name)}"><img src="${thumbOf(p)}" alt=""></a>`).join("")}</div>
+  <div class="trust"><div><b>Cash on delivery</b>Pay at your door</div><div><b>${DELIVERY.inside.days}–${DELIVERY.outside.days} day delivery</b>Across Bangladesh</div><div><b>From ${taka(DELIVERY.inside.fee)}</b>Delivery charge</div></div>
+ </section>
  <section class="picks" aria-label="Featured"${SUPER_DEALS.some(d=>d.dealPrice!=null)?"":' style="grid-template-columns:1fr"'}>
   <div class="panel"><h2>High Selection</h2><div class="two">${HIGH_SELECTION.map(s=>ALL_ITEMS().find(p=>p.slug===s)).filter(Boolean).map(p=>miniItem(p)).join("")}</div></div>
   ${SUPER_DEALS.some(d=>d.dealPrice!=null)?`<div class="panel"><h2>Super Deals</h2><div class="two">${SUPER_DEALS.map(d=>[ALL_ITEMS().find(p=>p.slug===d.slug),d.dealPrice]).filter(a=>a[0]).map(a=>miniItem(a[0],a[1])).join("")}</div></div>`:""}
  </section>
  <section class="up" aria-label="Upcoming products"><div class="uph"><h2>Upcoming Products</h2></div>
   <div class="row">${ALL_ITEMS().filter(p => p.upcoming).map(u=>`<a class="ui" href="#/product/${u.slug}"><img src="${thumbOf(u)}" alt="${esc(u.name)}" loading="lazy"><div class="un">${esc(u.name)}</div><div class="sub">${esc(u.subtitle || "")}</div><div class="up2">${taka(u.price)}</div></a>`).join("")}</div></section>
- <div class="chips" id="products" role="tablist" aria-label="Product categories">${[{id:"all",label:"All"}].concat(CATEGORIES).map(c=>`<button class="chip" role="tab" data-cat="${c.id}" aria-selected="false">${c.label}</button>`).join("")}</div>
- <div class="sh" style="margin-top:10px"><h2 id="ptitle"></h2><span class="demo-note"><span id="count"></span></span></div>
- <section class="grid" id="grid" aria-live="polite"></section>${footHtml()}`;
+ <section class="filt" id="products" aria-label="Filter products">
+  <div class="fhead"><h2 id="ptitle"></h2><span class="fcount" id="count" aria-live="polite"></span></div>
+  <div class="chips" id="cats" role="tablist" aria-label="Product categories"></div>
+  <div class="frow">
+   <div class="seg" role="group" aria-label="Availability">${AVAIL.map(([v,l]) => `<button type="button" data-av="${v}" aria-pressed="${avail === v}">${l}</button>`).join("")}</div>
+   <label class="sort" for="sort">Sort<select id="sort">${SORTS.map(([v,l]) => `<option value="${v}" ${sort === v ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+  </div>
+  <div class="active" id="active"></div>
+ </section>
+ <section class="grid" id="grid" aria-live="polite"></section>`;
+ $("#sort").onchange = e => { sort = e.target.value; renderGrid(); };
  renderGrid();
 }
 function viewSoon(title, text){
@@ -375,16 +486,23 @@ const waHref = msg => { const n = (CONTACT.whatsapp || "").replace(/\D/g, ""); r
 const waBtn = (msg, label = "Discuss on WhatsApp") => `<a class="btn wa" href="${waHref(msg)}"${CONTACT.whatsapp ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`;
 const validate = v => ({nm: v.nm.length < 2 ? "Enter your name." : "", ph: /^(?:\+?88)?01[3-9]\d{8}$/.test(v.ph) ? "" : "Enter a valid Bangladesh mobile number, like 01712345678.", ad: v.ad.length < 8 ? "Enter your full delivery address." : "", dt: v.dt ? "" : "Choose your district."});
 
-function footHtml(){
- const c = CONTACT, row = (k, v, href) => `<div class="fr"><span>${k}</span>${v ? (href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(v)}</a>` : `<span>${esc(v)}</span>`) : '<span class="pending">Add here</span>'}</div>`;
- return `<section class="foot" id="contact" aria-label="About Family Fit">
-  <div class="flogo"><img src="assets/images/brand/logo-footer.jpg" alt="Family Fit: সচেতন জীবন, সুস্থ পরিবার"></div>
-  <p style="margin:8px 0 0">More than a shop: family health information and essential products for mothers, children and elders.</p>
-  <h3>Contact us</h3>${row("Phone", c.phone, c.phone && "tel:" + c.phone)}${row("WhatsApp", c.whatsapp, c.whatsapp && waHref("Hello Family Fit"))}${row("Email", c.email, c.email && "mailto:" + c.email)}${row("Address", c.address)}${row("Facebook page", c.facebook, c.facebook)}${c.hours ? row("Open hours", c.hours) : ""}
-  <div style="margin-top:10px">${waBtn("Hello Family Fit, I have a question.")}</div>
-  <h3>Delivery</h3>${Object.values(DELIVERY).map(d => `<div class="fr"><span>${d.label} (${d.days} days)</span><span>${taka(d.fee)}</span></div>`).join("")}
-  <h3>How to order</h3><ol><li>Choose a product, color and quantity.</li><li>Add to cart, then enter your name, phone and address.</li><li>Place the order and keep your order number.</li></ol>
-  <p class="cap">Pre-order customers get a call to confirm their order once the product is in hand.</p><h3>Information</h3><p class="fl"><a href="#/info/about">About</a><a href="#/info/faq">FAQ</a><a href="#/soon/delivery">Delivery</a><a href="#/info/returns">Returns</a><a href="#/info/privacy">Privacy</a><a href="#/info/terms">Terms</a></p><p class="cap"><a href="#/admin">Admin (prototype)</a></p></section>`;
+/* Site footer: contact details first, then logo, then delivery / how to order / links. Shown on every page. */
+function siteFoot(){
+ const c = CONTACT;
+ const cards = [["phone","Call us",c.phone,c.phone && "tel:" + c.phone],["chat","WhatsApp",c.whatsapp && "+" + c.whatsapp,c.whatsapp && waHref("Hello Family Fit")],
+  ["mail","Email",c.email,c.email && "mailto:" + c.email],["fb","Facebook","Family Fit page",c.facebook],["pin","Address",c.address,null],["clock","Open hours",c.hours,null]].filter(x => x[2]);
+ return `<div class="wrap">
+  <section aria-labelledby="fch" id="contact"><h2 id="fch">Contact us</h2><p class="fsub">We are happy to help with orders, delivery and product questions.</p>
+   <div class="cgrid">${cards.map(([ic,l,v,h]) => { const inner = `<span class="cic">${icon(ic)}</span><span style="min-width:0"><small>${l}</small><b>${esc(v)}</b></span>`;
+    return h ? `<a class="ccard" href="${esc(h)}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ""}>${inner}</a>` : `<div class="ccard">${inner}</div>`; }).join("")}</div></section>
+  <div class="fbrand"><div class="flogo"><img src="assets/images/brand/logo-footer.jpg" alt="Family Fit: সচেতন জীবন, সুস্থ পরিবার" loading="lazy"></div>
+   <p>More than a shop: family health information and essential products for mothers, children and elders.</p></div>
+  <div class="fcols">
+   <div><h3>Delivery</h3>${Object.values(DELIVERY).map(d => `<div class="frow2"><span>${d.label} · ${d.days} days</span><b>${taka(d.fee)}</b></div>`).join("")}<p class="fnote">Cash on delivery available.</p></div>
+   <div><h3>How to order</h3><ol><li>Choose a product, colour and quantity.</li><li>Add to cart, then enter your name, phone and address.</li><li>Place the order and keep your order number.</li></ol></div>
+   <div><h3>Information</h3><nav class="flinks" aria-label="Information"><a href="#/info/about">About</a><a href="#/info/faq">FAQ</a><a href="#/soon/delivery">Delivery</a><a href="#/info/returns">Returns</a><a href="#/info/privacy">Privacy</a><a href="#/info/terms">Terms</a></nav></div>
+  </div>
+  <div class="fbase">© ${new Date().getFullYear()} Family Fit · familyfitbd.com</div></div>`;
 }
 
 /* Step 1: choose color and quantity */
@@ -645,9 +763,11 @@ document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
  document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x===b));
  { if(location.hash!=="#/") location.hash="#/"; setTimeout(()=>{const s=$("#products"); if(s) s.scrollIntoView({behavior:"smooth"});},0); }
 });
-$("#app").addEventListener("click", e => { const c = e.target.closest(".chip"); if(c){ cat = c.dataset.cat; query = ""; $("#q").value = ""; $("#clr").hidden = true; renderGrid(); return; }
+$("#app").addEventListener("click", e => { const c = e.target.closest(".chip"); if(c){ cat = c.dataset.cat; renderGrid(); return; }
+ const av = e.target.closest("[data-av]"); if(av){ avail = av.dataset.av; renderGrid(); return; }
+ const cl = e.target.closest("[data-clear]"); if(cl){ clearFilter(cl.dataset.clear); return; }
  const b = e.target.closest("[data-go]"); if(!b) return; const t = b.dataset.go;
- if(t==="new"||t==="cats") $("#products").scrollIntoView({behavior:"smooth"}); else if(t==="search"){ window.scrollTo({top:0,behavior:"smooth"}); $("#q").focus(); } else location.hash = "#/" + t; });
+ if(t==="new"||t==="cats"||t==="shop") $("#products").scrollIntoView({behavior:"smooth"}); else if(t==="search"){ window.scrollTo({top:0,behavior:"smooth"}); $("#q").focus(); } else location.hash = "#/" + t; });
 const SOON = {messages:["Messages","Chat with Family Fit will be added in a later phase."],cart:["Cart","Your cart will appear here once it is built. For now, order from a product page."],me:["Me","Accounts and order history will be added in a later phase."],
  categories:["Categories","Category browsing is not built yet. For now, all products are on the home page."],offers:["Offers","No offers are active. When there are, they will appear here."],
  delivery:["Delivery information","Inside Dhaka: ৳60, 2 days. Outside Dhaka: ৳120, 3 days. The delivery charge is added to your total when you place an order."], whatsapp:["WhatsApp","The WhatsApp number has not been added yet. Once it is added, this button opens a chat with Family Fit."],favorites:["Favorites","Saving favorite products will be added in a later phase."]};
@@ -673,6 +793,7 @@ function route(){
  document.title = (parts[1] === "product" && item(parts[2]) ? item(parts[2]).name + " | " : TT[parts[1]] ? TT[parts[1]] + " | " : "") + "Family Fit";
  window.scrollTo(0,0);
 }
+$("#sitefoot").innerHTML = siteFoot();
 window.addEventListener("hashchange", route); route();
 </script>
 </body>

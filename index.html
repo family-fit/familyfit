@@ -199,6 +199,13 @@ form input,form textarea{width:100%;margin-top:4px;padding:10px;border:1px solid
 .bdg{position:absolute;top:-5px;right:-8px;background:var(--orange);color:#fff;border-radius:999px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px;font-style:normal;font-weight:700}
 nav.bottom a svg{position:relative}.nb{position:relative;display:inline-block}
 .btn.wa{background:#1d9a50;color:#fff;display:block;width:100%}
+.btn.ms{background:#0866ff;color:#fff;display:block;width:100%}
+.sendbox{display:grid;gap:8px;margin-top:12px;text-align:left}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{display:block;font-size:24px;line-height:1.2;color:var(--blue)}.stat span{font-size:13px;color:var(--mute)}
+.stat.hl{background:var(--blue);border-color:var(--blue)}.stat.hl b,.stat.hl span{color:var(--on-blue)}
+@media (min-width:640px){.stats{grid-template-columns:repeat(3,1fr)}}
 .cl{display:flex;gap:10px;align-items:center}.cl img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}.ci{flex:1;min-width:0}
 .cq{display:flex;flex-direction:column;align-items:flex-end;gap:6px}.cq .qty button{width:34px;height:34px}.qn{min-width:28px;text-align:center;font-weight:700}
 .rm,.stk{border:0;background:none;color:#c0262d;font-size:13px;cursor:pointer;text-decoration:underline}
@@ -219,7 +226,7 @@ nav.bottom a svg{position:relative}.nb{position:relative;display:inline-block}
 body.pdp nav.bottom,body.flow nav.bottom{display:none}
 .steps{display:flex;gap:6px;font-size:13px;font-weight:600}.steps span{flex:1;text-align:center;padding:6px 4px;border-radius:999px;background:var(--chip);color:var(--mute)}.steps .on{background:var(--blue);color:var(--on-blue)}
 .pm{display:flex;gap:12px;align-items:center}.pm img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none}
-nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding:4px 0 calc(4px + env(safe-area-inset-bottom,0px))}
+nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border-top:1px solid var(--line);padding:4px 0 calc(4px + env(safe-area-inset-bottom,0px))}
 nav.bottom a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:500;color:var(--mute);padding:4px 0}
 nav.bottom a[aria-current=page]{color:var(--blue);font-weight:700}
 nav.bottom a[aria-current=page] svg{stroke-width:2.6}
@@ -261,7 +268,10 @@ const DISTRICTS = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura",
 const SHOW_RATINGS = false; // turn on only when real customer reviews exist (ratings in the data are demo values)
 const DELIVERY = {inside:{label:"Inside Dhaka",fee:60,days:2}, outside:{label:"Outside Dhaka",fee:120,days:3}}; // delivery charges in BDT
 /* Fill these in. WhatsApp must be country code + number, like 8801XXXXXXXXX. Empty items show "Add here". */
-const CONTACT = {phone:"01965720300", whatsapp:"8801965720300", email:"familyfit09@gmail.com", address:"Online shop", facebook:"https://www.facebook.com/share/1Km1mM22pL/", hours:""};
+const CONTACT = {phone:"01965720300", whatsapp:"8801965720300", email:"familyfit09@gmail.com", address:"Online shop", facebook:"https://www.facebook.com/share/1Km1mM22pL/", hours:"",
+ messenger:""}; // messenger: Facebook Page username (facebook.com/<username>). Empty = the Messenger button opens the Facebook link instead.
+/* Admin login. NOTE: anyone who views the page source can read this; it only keeps casual visitors out. */
+const ADMIN = {user:"admin", pass:"123"};
 
 /* ===== 2. PRODUCT DATA (edit here) =====
    images: list of {src, alt}. video: file/data URL or null. rating/reviewCount/soldCount are DEMO values. */
@@ -318,11 +328,11 @@ const thumbOf = p => p.thumb || (p.images[0] && p.images[0].src) || placeholder(
 
 /* ===== 4. STATE ===== */
 let query = "", gallerySel = 0, cat = "all", sort = "rec", avail = "all";
-const NAV = [["#/","Home","home"],["#/messages","Messages","chat"],["#/cart","Cart","cart"],["#/me","Me","user"]];
+const NAV = [["#/","Home","home"],["#/cart","Cart","cart"],["#/messages","Chat","chat"]];
 
 /* ===== 5. VIEWS ===== */
 function renderNav(h){
-  const cur = h === "#/" || /^#\/(product|soon|order)/.test(h) ? "#/" : /^#\/checkout/.test(h) ? "#/cart" : /^#\/(placed|track)/.test(h) ? "#/me" : h;
+  const cur = h === "#/" || /^#\/(product|soon|order)/.test(h) ? "#/" : /^#\/checkout/.test(h) ? "#/cart" : /^#\/(placed|track)/.test(h) ? "#/" : h;
  const html = NAV.map(([href,label,ic]) => `<a href="${href}" ${href===cur?'aria-current="page"':""}><span class="nb">${icon(ic)}${href==="#/cart"&&cartCount()?`<i class="bdg">${cartCount()}</i>`:""}</span><span>${label}</span></a>`).join("");
  $("#bn").innerHTML = html; $("#dn").innerHTML = html;
 }
@@ -484,6 +494,17 @@ const orderNo = () => { const d = new Date(), z = n => String(n).padStart(2,"0")
  return `FF-${String(d.getFullYear()).slice(2)}${z(d.getMonth()+1)}${z(d.getDate())}-${r}`; };
 const waHref = msg => { const n = (CONTACT.whatsapp || "").replace(/\D/g, ""); return n ? `https://wa.me/${n}?text=${encodeURIComponent(msg)}` : "#/soon/whatsapp"; };
 const waBtn = (msg, label = "Discuss on WhatsApp") => `<a class="btn wa" href="${waHref(msg)}"${CONTACT.whatsapp ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`;
+const msHref = () => CONTACT.messenger ? `https://m.me/${CONTACT.messenger}` : (CONTACT.facebook || "#/messages");
+/* The order message customers send on WhatsApp / Messenger */
+const orderMsg = o => ["Hello Family Fit, I placed an order.", "Order no: " + o.no,
+ ...o.lines.map(l => `• ${l.name}${l.color ? " (" + l.color + ")" : ""} × ${l.q} = ${taka(l.price * l.q)}${l.pre ? " (pre-order)" : ""}`),
+ `Delivery (${DELIVERY[o.area].label}): ${taka(o.fee)}`, "Total: " + taka(o.total),
+ "Name: " + o.name, "Phone: " + o.phone, "Address: " + o.address + (o.district ? ", " + o.district : ""), o.note ? "Note: " + o.note : ""].filter(Boolean).join("\n");
+function copyText(t){
+ if(navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).then(() => true, () => false);
+ const ta = document.createElement("textarea"); ta.value = t; ta.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(ta); ta.select();
+ let ok = false; try{ ok = document.execCommand("copy"); }catch(e){} ta.remove(); return Promise.resolve(ok);
+}
 const validate = v => ({nm: v.nm.length < 2 ? "Enter your name." : "", ph: /^(?:\+?88)?01[3-9]\d{8}$/.test(v.ph) ? "" : "Enter a valid Bangladesh mobile number, like 01712345678.", ad: v.ad.length < 8 ? "Enter your full delivery address." : "", dt: v.dt ? "" : "Choose your district."});
 
 /* Site footer: contact details first, then logo, then delivery / how to order / links. Shown on every page. */
@@ -575,26 +596,30 @@ function viewCheckout(){
   const sub = cartSub(), fee = DELIVERY[chk.area].fee;
   const o = {no:orderNo(), date:new Date().toISOString(), name:v.nm, phone:v.ph, address:v.ad, district:v.dt, note:v.nt, area:chk.area, sub, fee, total:sub + fee, status:"Placed",
    lines:cart.map(l => ({name:item(l.slug).name, color:l.color, q:l.q, price:item(l.slug).price, pre:!!item(l.slug).upcoming}))};
-  orders.unshift(o); store.set("ff_orders", orders); cart = []; saveCart(); chk = {area:chk.area}; location.hash = "#/placed/" + o.no;
+  orders.unshift(o); store.set("ff_orders", orders); cart = []; saveCart(); chk = {area:chk.area};
+  if(CONTACT.whatsapp) window.open(waHref(orderMsg(o)), "_blank", "noopener"); // opens WhatsApp with the order ready to send
+  location.hash = "#/placed/" + o.no;
  };
 }
 
 /* Order confirmation / tracking page */
 function viewOrderPage(no, placed){
  const o = orders.find(x => x.no === String(no).toUpperCase());
- if(!o){ viewSoon("Order not found","We could not find that order number on this device. Until the store system is connected, an order is only saved on the device that placed it."); return; }
- const d = DELIVERY[o.area], pre = o.lines.some(l => l.pre);
- const msg = `Hello Family Fit, my order number is ${o.no}.\n` + o.lines.map(l => `${l.name}${l.color ? " (" + l.color + ")" : ""} x ${l.q}`).join("\n") + `\nTotal: ${taka(o.total)} (${d.label} delivery ${taka(o.fee)})\nName: ${o.name}\nPhone: ${o.phone}\nAddress: ${o.address}`;
+ if(!o){ viewSoon("Order not found","We could not find that order on this phone. Send us your order number on WhatsApp or Messenger and we will help."); return; }
+ const d = DELIVERY[o.area], pre = o.lines.some(l => l.pre), msg = orderMsg(o);
  $("#app").innerHTML = `<div class="pd flowpage">
-  <div class="box" style="text-align:center"><h2 style="margin:0">${placed ? "Order placed" : "Track your order"}</h2><p style="margin:4px 0 0;color:var(--mute)">Your order number</p><div class="ono">${o.no}</div>
-   <div class="notice" style="text-align:left"><b>Demo.</b> This order is saved on this device only and has not been sent to Family Fit yet.</div></div>
-  <div class="box">${o.status === "Cancelled" ? `<div class="notice"><b>This order was cancelled.</b></div>` : `<div class="steps">${["Placed","Confirmed","Out for delivery","Delivered"].map((s,i,a) => `<span class="${i <= a.indexOf(o.status) ? "on" : ""}">${s === "Placed" ? "Order placed" : s}</span>`).join("")}</div>`}<p class="cap">Status updates will work once the store system is connected.</p></div>
+  <div class="box" style="text-align:center"><h2 style="margin:0">${placed ? "Order placed" : "Your order"}</h2><p style="margin:4px 0 0;color:var(--mute)">Your order number</p><div class="ono">${o.no}</div>
+   <div class="notice" style="text-align:left"><b>Last step: send us your order.</b> WhatsApp opens with your order message. Tap <b>Send</b> there. If it did not open, or you prefer Messenger, use a button below.</div>
+   <div class="sendbox">${waBtn(msg, "Send order on WhatsApp")}<button class="btn ms" id="msgr" type="button">Send order on Messenger</button><button class="btn g" id="cpy" type="button">Copy order details</button><p class="cap" id="cpm" role="status" style="text-align:center"></p></div></div>
   <div class="box"><h2 style="margin:0 0 8px">Order details</h2>${o.lines.map(l => `<div class="fr"><span>${esc(l.name)}${l.color ? " (" + esc(l.color) + ")" : ""} × ${l.q}</span><span>${taka(l.price * l.q)}</span></div>`).join("")}
    <div class="sum" style="margin-top:8px"><div><span>Subtotal</span><span>${taka(o.sub)}</span></div><div><span>Delivery (${d.label})</span><span>${taka(o.fee)}</span></div><div class="t"><span>Total</span><span>${taka(o.total)}</span></div></div>
    <div class="fr" style="margin-top:8px"><span>Name</span><span>${esc(o.name)}</span></div><div class="fr"><span>Phone</span><span>${esc(o.phone)}</span></div><div class="fr"><span>Address</span><span style="text-align:right">${esc(o.address)}, ${esc(o.district || "")}</span></div>${o.note ? `<div class="fr"><span>Note</span><span>${esc(o.note)}</span></div>` : ""}</div>
   <div class="box"><h2 style="margin:0 0 8px">Delivery information</h2>${Object.values(DELIVERY).map(x => `<div class="fr"><span>${x.label} (${x.days} days)</span><span>${taka(x.fee)}</span></div>`).join("")}
    <p style="margin:8px 0 0">Your delivery area: <b>${d.label}</b>, charge <b>${taka(o.fee)}</b>, delivery time <b>${d.days} days</b>.</p>${pre ? `<p style="margin:6px 0 0">Pre-order items: when the product is in hand, you will get a call to confirm your order.</p>` : ""}</div>
-  ${waBtn("Hello Family Fit, I want to discuss my order " + o.no + ".", "Discuss this order on WhatsApp")}<a class="btn" href="#/" style="margin-top:8px" id="homeBtn">Back to home</a></div>`;
+  <a class="btn" href="#/" id="homeBtn">Back to home</a></div>`;
+ $("#msgr").onclick = () => { copyText(msg).then(ok => { $("#cpm").textContent = ok ? "Order copied. In Messenger, tap and hold the message box, then Paste and Send." : "In Messenger, type your order number: " + o.no; });
+  window.open(msHref(), "_blank", "noopener"); };
+ $("#cpy").onclick = () => copyText(msg).then(ok => { $("#cpm").textContent = ok ? "Order details copied." : "Could not copy. Please note your order number: " + o.no; });
 }
 /* ===== Admin (prototype): works on this device's orders only. A real admin needs a database and a login. ===== */
 const STATUSES = ["Placed","Confirmed","Out for delivery","Delivered","Cancelled"];
@@ -609,16 +634,40 @@ function adminCard(o){
   <div class="sub" style="margin-top:8px">Status</div><select class="st" data-no="${o.no}" aria-label="Order status">${STATUSES.map(s => `<option ${s === o.status ? "selected" : ""}>${s}</option>`).join("")}</select>
   <div style="display:flex;gap:8px;margin-top:10px"><a class="btn" style="flex:1" href="tel:${esc(o.phone)}">Call</a><a class="btn wa" style="flex:1" href="${custWa(o.phone, o.no)}" target="_blank" rel="noopener">WhatsApp</a></div></div>`;
 }
-const adminTabs = cur => `<div class="chips" style="margin-top:6px"><a class="achip" href="#/admin" aria-selected="${cur === "orders"}">Orders</a><a class="achip" href="#/admin/products" aria-selected="${cur === "products"}">Products</a></div>`;
-function viewAdmin(a, b){ if(a === "products") return viewAdminProducts(); if(a === "product") return viewAdminForm(b); return viewAdminOrders(); }
+const adminTabs = cur => `<div class="chips" style="margin-top:6px"><a class="achip" href="#/admin" aria-selected="${cur === "orders"}">Orders</a><a class="achip" href="#/admin/products" aria-selected="${cur === "products"}">Products</a><button class="achip" id="alo" type="button">Log out</button></div>`;
+let adminMem = false; // fallback when sessionStorage is blocked
+const isAdmin = () => { try{ return sessionStorage.getItem("ff_admin") === "1"; }catch(e){ return adminMem; } };
+const setAdmin = v => { adminMem = v; try{ v ? sessionStorage.setItem("ff_admin", "1") : sessionStorage.removeItem("ff_admin"); }catch(e){} };
+function viewAdminLogin(){
+ $("#app").innerHTML = `<div class="pd flowpage" style="max-width:420px"><a class="back" href="#/">${icon("back")} Back to shop</a>
+  <form class="box" id="lf" novalidate><h1 style="margin:0">Admin login</h1>
+   <label for="lu">Username</label><input id="lu" autocomplete="username" autocapitalize="none">
+   <label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
+   <div class="err" id="e-l" role="alert"></div><button class="btn o" type="submit" style="margin-top:8px">Log in</button></form></div>`;
+ $("#lu").focus();
+ $("#lf").onsubmit = e => { e.preventDefault();
+  if($("#lu").value.trim() === ADMIN.user && $("#lp").value === ADMIN.pass){ setAdmin(true); route(); }
+  else { $("#e-l").textContent = "Wrong username or password."; $("#lp").value = ""; $("#lp").focus(); } };
+}
+function viewAdmin(a, b){
+ if(!isAdmin()) return viewAdminLogin();
+ if(a === "products") viewAdminProducts(); else if(a === "product") viewAdminForm(b); else viewAdminOrders();
+ const lo = $("#alo"); if(lo) lo.onclick = () => { setAdmin(false); location.hash = "#/"; };
+}
 function viewAdminOrders(){
  $("#app").innerHTML = `<div class="pd"><a class="back" href="#/">${icon("back")} Back to shop</a><h1 style="margin:0">Admin: Orders</h1>${adminTabs("orders")}
-  <div class="notice"><b>Prototype.</b> This shows only orders placed on this device. There is no login yet. Orders from real customers will appear here after the database and admin login are added.</div>
+  <div class="stats" id="ast"></div>
+  <div class="notice" style="margin-top:0"><b>Note.</b> These numbers count only orders placed on <b>this phone or computer</b>. Real customer orders arrive in your WhatsApp and Messenger chats.</div>
   <div class="chips" id="af" style="margin-top:0"></div><input id="aq" placeholder="Search order number, name or phone" aria-label="Search orders" value="${esc(adminQ)}">
   <div id="alist" style="display:grid;gap:12px"></div>
   <div style="display:flex;gap:8px"><button class="btn g" id="smp" style="flex:1">Add 3 sample orders</button><button class="btn g" id="clr2" style="flex:1">Remove samples</button></div></div>`;
  const draw = () => {
   const n = s => s === "All" ? orders.length : orders.filter(o => o.status === s).length, q = adminQ.trim().toLowerCase();
+  const today = new Date().toDateString(), live = orders.filter(o => o.status !== "Cancelled");
+  const st = [["Total orders", orders.length, true], ["Today", orders.filter(o => new Date(o.date).toDateString() === today).length],
+   ["Pending", orders.filter(o => ["Placed","Confirmed","Out for delivery"].includes(o.status)).length], ["Delivered", n("Delivered")],
+   ["Cancelled", n("Cancelled")], ["Sales", taka(live.reduce((a,o) => a + o.total, 0))]];
+  $("#ast").innerHTML = st.map(([l,v,hl]) => `<div class="stat${hl ? " hl" : ""}"><b>${v}</b><span>${l}</span></div>`).join("");
   $("#af").innerHTML = ["All", ...STATUSES].map(s => `<button class="achip" data-f="${s}" aria-selected="${adminF === s}">${s} (${n(s)})</button>`).join("");
   $("#af").querySelectorAll(".achip").forEach(b => b.onclick = () => { adminF = b.dataset.f; draw(); });
   const list = orders.filter(o => (adminF === "All" || o.status === adminF) && (!q || (o.no + o.name + o.phone).toLowerCase().includes(q)));
@@ -714,7 +763,7 @@ const INFO = {
   <details><summary>How much is delivery?</summary><p>${Object.values(DELIVERY).map(d => d.label + " " + taka(d.fee)).join(", ")}.</p></details>
   <details><summary>How long does delivery take?</summary><p>${Object.values(DELIVERY).map(d => d.label + " " + d.days + " days").join(", ")}.</p></details>
   <details><summary>What is a pre-order?</summary><p>Products marked Coming soon are not in hand yet. When the product is in hand, you will get a call to confirm your order.</p></details>
-  <details><summary>How do I track my order?</summary><p>Open the Me tab and enter your order number.</p></details>
+  <details><summary>How do I check on my order?</summary><p>Message us on WhatsApp or Messenger with your order number, and we will tell you its status.</p></details>
   <details><summary>How can I pay?</summary><p>You can pay Cash on Delivery, which means you pay when your order is delivered. You can also pay in advance by bKash, Nagad or bank card.</p></details>
   <details><summary>How can I contact you?</summary><p>Use the Discuss on WhatsApp button, or call ${esc(CONTACT.phone)}.</p></details>`],
  returns:["Returns and cancellation", `<h2 class="h2s">Payment</h2><p>You can pay Cash on Delivery, which means you pay when your order is delivered to you. You can also pay in advance by bKash, Nagad or bank card.</p>
@@ -742,15 +791,9 @@ function viewInfo(k){
  const d = INFO[k]; if(!d){ viewSoon("Page not found","That page does not exist."); return; }
  $("#app").innerHTML = `<div class="pd"><a class="back" href="#/">${icon("back")} Back</a><div class="box info"><h1 style="margin:0 0 8px">${d[0]}</h1>${d[1]}</div><div class="box">${waBtn("Hello Family Fit, I have a question.")}</div></div>`;
 }
-function viewMe(){
- $("#app").innerHTML = `<div class="pd"><h1 style="margin:6px 0">Me</h1>
-  <form class="box" id="tf"><h2 style="margin:0 0 6px">Track an order</h2><label for="tn" style="margin-top:0">Order number</label><input id="tn" placeholder="FF-261016-AB12" autocapitalize="characters"><div class="err" id="e-tn"></div><button class="btn" type="submit" style="margin-top:8px">Track</button></form>
-  <div class="box"><h2 style="margin:0 0 6px">My orders (this device)</h2>${orders.length ? orders.map(o => `<a class="fr" href="#/track/${o.no}"><span><b>${o.no}</b><br><span class="sub">${new Date(o.date).toLocaleDateString("en-GB")}</span></span><span>${taka(o.total)} ›</span></a>`).join("") : '<p class="pending" style="margin:0">No orders yet.</p>'}</div>
-  <div class="box">${waBtn("Hello Family Fit", "Discuss on WhatsApp")}</div></div>`;
- $("#tf").onsubmit = e => { e.preventDefault(); const n = $("#tn").value.trim().toUpperCase(); if(orders.some(o => o.no === n)) location.hash = "#/track/" + n; else $("#e-tn").textContent = "No order with this number on this device."; };
-}
 function viewMessages(){
- $("#app").innerHTML = `<div class="soon" style="margin-top:12px"><h2>Message us</h2><p>Chat with Family Fit on WhatsApp.${CONTACT.phone ? " Or call " + esc(CONTACT.phone) + "." : ""}</p>${waBtn("Hello Family Fit")}</div>`;
+ $("#app").innerHTML = `<div class="pd"><div class="box" style="text-align:center"><h1 style="margin:0 0 4px">Chat with us</h1><p style="margin:0;color:var(--mute)">Questions about a product or your order? Message us. For an order, include your order number.</p>
+  <div class="sendbox">${waBtn("Hello Family Fit", "Chat on WhatsApp")}<a class="btn ms" href="${esc(msHref())}" target="_blank" rel="noopener">Chat on Messenger</a>${CONTACT.phone ? `<a class="btn g" href="tel:${esc(CONTACT.phone)}">Call ${esc(CONTACT.phone)}</a>` : ""}</div></div></div>`;
 }
 
 /* ===== 6. SEARCH, TABS, ROUTER ===== */
@@ -768,8 +811,7 @@ $("#app").addEventListener("click", e => { const c = e.target.closest(".chip"); 
  const cl = e.target.closest("[data-clear]"); if(cl){ clearFilter(cl.dataset.clear); return; }
  const b = e.target.closest("[data-go]"); if(!b) return; const t = b.dataset.go;
  if(t==="new"||t==="cats"||t==="shop") $("#products").scrollIntoView({behavior:"smooth"}); else if(t==="search"){ window.scrollTo({top:0,behavior:"smooth"}); $("#q").focus(); } else location.hash = "#/" + t; });
-const SOON = {messages:["Messages","Chat with Family Fit will be added in a later phase."],cart:["Cart","Your cart will appear here once it is built. For now, order from a product page."],me:["Me","Accounts and order history will be added in a later phase."],
- categories:["Categories","Category browsing is not built yet. For now, all products are on the home page."],offers:["Offers","No offers are active. When there are, they will appear here."],
+const SOON = {categories:["Categories","Category browsing is not built yet. For now, all products are on the home page."],offers:["Offers","No offers are active. When there are, they will appear here."],
  delivery:["Delivery information","Inside Dhaka: ৳60, 2 days. Outside Dhaka: ৳120, 3 days. The delivery charge is added to your total when you place an order."], whatsapp:["WhatsApp","The WhatsApp number has not been added yet. Once it is added, this button opens a chat with Family Fit."],favorites:["Favorites","Saving favorite products will be added in a later phase."]};
 function route(){
  const h = location.hash || "#/"; const parts = h.split("/");
@@ -778,7 +820,7 @@ function route(){
  else if(parts[1]==="product") viewProduct(parts[2]);
  else if(parts[1]==="order") viewOrder(parts[2]);
  else if(parts[1]==="cart") viewCart();
- else if(parts[1]==="me") viewMe();
+ else if(parts[1]==="me"){ location.replace("#/"); return; }
  else if(parts[1]==="messages") viewMessages();
  else if(parts[1]==="checkout") viewCheckout();
  else if(parts[1]==="placed") viewOrderPage(parts[2], true);

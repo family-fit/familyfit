@@ -14,6 +14,11 @@ Status as of 2 November 2026.
 - [x] **New footer on every page:** contact cards first, then the logo, then delivery, how to order and info links. The public "Admin" link was removed; open `/#/admin` directly.
 - [x] Domain `familyfitbd.com`: `CNAME` file, canonical link and Facebook preview (Open Graph) tags added.
 - [x] Tested at phone (390 px) and desktop (1280 px) widths: no sideways scrolling, no console errors.
+- [x] **Orders go to WhatsApp:** "Place order" opens WhatsApp with the full order message ready to send. The confirmation page also has *Send on WhatsApp*, *Send on Messenger* (copies the order, then opens Messenger) and *Copy order details*.
+- [x] **Bottom bar is now Home · Cart · Chat.** "Me" was removed (no customer login). Chat offers WhatsApp, Messenger and Call.
+- [x] **Admin login** at `/#/admin` (admin / 123, set in `ADMIN` in `index.html`), with Log out. The dashboard shows Total, Today, Pending, Delivered, Cancelled and Sales.
+  ⚠️ The counts include only orders placed on that device, because there is no shared storage yet (decision: no storage for now; see Phase 4).
+- [ ] Set `CONTACT.messenger` to the Facebook Page username so the Messenger button opens the chat directly. Until then it opens the Facebook page link.
 
 ---
 

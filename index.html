@@ -41,8 +41,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:va
 .search .clr{border:0;background:none;padding:0 10px;height:100%;color:#5d6877;cursor:pointer;font-size:22px}
 .search .go{border:0;background:var(--orange);color:#fff;padding:0 16px;height:100%;font-size:14px;font-weight:700;cursor:pointer}
 .search:focus-within{box-shadow:0 0 0 3px rgba(201,85,43,.3)}
+.subbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .desknav{display:none;gap:4px}
-.desknav a{display:flex;gap:6px;align-items:center;padding:6px 10px;border-radius:8px;font-weight:500}
+.desknav a{display:flex;gap:6px;align-items:center;padding:3px 12px;border-radius:8px;font-weight:600;font-size:14.5px}
+.desknav svg.i{width:19px;height:19px}
 .desknav a[aria-current=page]{color:var(--blue);background:var(--chip)}
 .tabs{display:flex;gap:16px;overflow-x:auto;padding:0 0 1px;font-size:14px;scrollbar-width:none}
 .tabs button{border:0;background:none;padding:1px 2px;font-size:14px;font-weight:600;color:#5d6877;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
@@ -232,7 +234,7 @@ nav.bottom a[aria-current=page]{color:var(--blue);font-weight:700}
 nav.bottom a[aria-current=page] svg{stroke-width:2.6}
 @media (max-width:380px){.seg button{font-size:13px;padding:8px 4px}.search .go{padding:0 12px}.trust b{font-size:12.5px}}
 @media (min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:12px}.promos{grid-template-columns:2fr 1fr}.logo{width:34px}.cgrid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:768px){nav.bottom{display:none}.desknav{display:flex}main{padding-bottom:16px}.quick button{font-size:14px}
+@media (min-width:768px){nav.bottom{display:none}.desknav{display:flex}.subbar{padding:2px 0 4px}.subbar .tabs{gap:22px}.tabs button{font-size:14.5px;padding:4px 2px}main{padding-bottom:16px}.quick button{font-size:14px}
  footer.site{padding-bottom:28px}body.pdp footer.site,body.flow footer.site{padding-bottom:104px}
  .cover{grid-template-columns:1.15fr 1fr;align-items:center;padding:40px 36px 30px;gap:24px 32px}
  .cv-art{grid-template-columns:1fr 1fr;gap:14px;max-width:380px;justify-self:end;width:100%}
@@ -249,12 +251,14 @@ nav.bottom a[aria-current=page] svg{stroke-width:2.6}
  <div class="top">
   <a class="logo" href="#/" aria-label="Family Fit home"><img src="assets/images/brand/logo.png" alt="Family Fit"></a>
   <form class="search" role="search" id="sf"><svg class="i si" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14M16 16l5 5"/></svg><input id="q" type="search" placeholder="Search toothbrush, newborn…" aria-label="Search products" autocomplete="off"><button type="button" class="clr" id="clr" aria-label="Clear search" hidden>×</button><button class="go" type="submit">Search</button></form>
-  <nav class="desknav" id="dn" aria-label="Main"></nav>
  </div>
+ <div class="subbar">
+ <nav class="desknav" id="dn" aria-label="Main"></nav>
  <div class="tabs" role="tablist" aria-label="Browse">
   <button role="tab" aria-selected="true" data-tab="foryou">For You</button>
   <button role="tab" aria-selected="false" data-tab="new">New Arrivals</button>
   <button role="tab" aria-selected="false" data-tab="cats">Categories</button>
+ </div>
  </div>
 </div></header>
 <main class="wrap" id="app"></main>
